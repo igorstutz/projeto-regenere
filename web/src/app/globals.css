@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/*
+ * ============================================================================
+ * DESIGN SYSTEM — Projeto Regenere
+ * ----------------------------------------------------------------------------
+ * Tokens de marca centralizados. Para trocar a identidade visual quando o
+ * cliente enviar o material oficial, basta ajustar as escalas de cor e as
+ * fontes abaixo — nenhum componente referencia cores "cruas".
+ *
+ * Paleta provisória:
+ *   - brand  : verde (regeneração / sustentabilidade / território)
+ *   - accent : coral-rosa quente (referência à "Camélia")
+ *   - neutros: cinzas levemente quentes
+ * ============================================================================
+ */
+
+@theme {
+  /* ---- Cor de marca (verde) ---- */
+  --color-brand-50: #eef7f1;
+  --color-brand-100: #d5ecdc;
+  --color-brand-200: #aed9bb;
+  --color-brand-300: #7dc093;
+  --color-brand-400: #4fa46b;
+  --color-brand-500: #2f8551;
+  --color-brand-600: #236b41;
+  --color-brand-700: #1d5536;
+  --color-brand-800: #19432c;
+  --color-brand-900: #133626;
+  --color-brand-950: #081f15;
+
+  /* ---- Cor de acento (coral / camélia) ---- */
+  --color-accent-50: #fdf2f4;
+  --color-accent-100: #fbe2e7;
+  --color-accent-200: #f6c6d1;
+  --color-accent-300: #ee9aac;
+  --color-accent-400: #e36b85;
+  --color-accent-500: #d44a66;
+  --color-accent-600: #bd2f4f;
+  --color-accent-700: #9e2541;
+  --color-accent-800: #84223b;
+  --color-accent-900: #702037;
+
+  /* ---- Neutros (cinza quente) ---- */
+  --color-sand-50: #faf9f7;
+  --color-sand-100: #f3f1ed;
+  --color-sand-200: #e7e3db;
+  --color-sand-300: #d4cec1;
+  --color-sand-400: #aca597;
+  --color-sand-500: #847d6f;
+  --color-sand-600: #635d52;
+  --color-sand-700: #4a4640;
+  --color-sand-800: #322f2b;
+  --color-sand-900: #1c1a17;
+
+  /* ---- Semânticos ---- */
+  --color-background: #ffffff;
+  --color-foreground: var(--color-sand-900);
+  --color-muted: var(--color-sand-600);
+  --color-border: var(--color-sand-200);
+
+  /* ---- Tipografia (variáveis preenchidas via next/font no layout) ---- */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), Georgia, "Times New Roman", serif;
+
+  /* ---- Raios e containers ---- */
+  --radius-card: 1rem;
+}
+
+/* ============================================================================
+ * Camada base
+ * ========================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  /* Foco visível e acessível em toda a aplicação */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-200);
+  }
+}
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

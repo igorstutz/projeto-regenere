@@ -1,0 +1,26 @@
+import type { PageSeo } from "./_types";
+
+export interface ContatoContent {
+  seo: PageSeo;
+  hero: { eyebrow: string; title: string; intro: string };
+  formNote: string;
+}
+
+export const contatoContent: ContatoContent = {
+  seo: {
+    title: "Contato",
+    description:
+      "Fale com o Projeto Regenere. Envie uma mensagem para parcerias, " +
+      "patrocínio ou para levar o programa ao seu território.",
+  },
+  hero: {
+    eyebrow: "Contato",
+    title: "Conecte-se com a gente.",
+    intro:
+      "Quer apoiar, ser parceiro ou levar o Regenere ao seu território? Envie uma " +
+      "mensagem — teremos prazer em conversar.",
+  },
+  formNote:
+    "Ao enviar, você concorda com o tratamento dos seus dados conforme a nossa " +
+    "Política de Privacidade.",
+};
