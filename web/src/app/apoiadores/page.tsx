@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { apoiadoresContent as c, type Supporter } from "@/content/apoiadores";
+import { apoiadoresContent as c } from "@/content/apoiadores";
 import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBand } from "@/components/sections/cta-band";
+import { SupportersWall } from "@/components/sections/supporters-wall";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { SectionHeader } from "@/components/ui/section-header";
+import { SparklesIcon, NetworkIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata({
   title: c.seo.title,
@@ -13,60 +15,32 @@ export const metadata: Metadata = buildMetadata({
   path: "/apoiadores",
 });
 
-function SupporterCard({ item }: { item: Supporter }) {
-  const content = (
-    <>
-      <h3 className="text-lg">{item.name}</h3>
-      {item.description ? (
-        <p className="mt-2 text-sm leading-relaxed text-sand-600">{item.description}</p>
-      ) : null}
-    </>
-  );
-
-  const className =
-    "block rounded-[var(--radius-card)] border border-border bg-background p-6";
-
-  if (item.url) {
-    return (
-      <a
-        href={item.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${className} transition-colors hover:border-brand-300`}
-      >
-        {content}
-      </a>
-    );
-  }
-  return <div className={className}>{content}</div>;
-}
+const groupIcons = [
+  <SparklesIcon key="0" className="size-4" />,
+  <NetworkIcon key="1" className="size-4" />,
+];
 
 export default function ApoiadoresPage() {
   return (
     <>
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} intro={c.hero.intro} />
 
-      <Section>
-        <Container size="wide">
-          <SectionHeader title={c.sponsors.title} intro={c.sponsors.intro} />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {c.sponsors.items.map((item) => (
-              <SupporterCard key={item.name} item={item} />
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section tone="muted">
-        <Container size="wide">
-          <SectionHeader title={c.partners.title} intro={c.partners.intro} />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {c.partners.items.map((item) => (
-              <SupporterCard key={item.name} item={item} />
-            ))}
-          </div>
-        </Container>
-      </Section>
+      {c.groups.map((group, i) => (
+        <Section key={group.title} tone={i % 2 === 1 ? "muted" : "default"}>
+          <Container size="wide">
+            <SectionHeader
+              badge
+              icon={groupIcons[i] ?? groupIcons[0]}
+              eyebrow={group.eyebrow}
+              title={group.title}
+              intro={group.intro}
+            />
+            <div className="mt-12">
+              <SupportersWall items={group.items} />
+            </div>
+          </Container>
+        </Section>
+      ))}
 
       <CtaBand cta={c.cta} />
     </>

@@ -6,6 +6,7 @@ export interface HomeContent {
     eyebrow: string;
     title: string;
     subtitle: string;
+    slides: { src: string; alt: string; caption?: string }[];
     primary: { label: string; href: string };
     secondary: { label: string; href: string };
   };
@@ -14,6 +15,7 @@ export interface HomeContent {
     eyebrow: string;
     title: string;
     paragraphs: string[];
+    image: string;
     href: string;
   };
   pillars: {
@@ -25,7 +27,7 @@ export interface HomeContent {
   experiences: {
     eyebrow: string;
     title: string;
-    items: { name: string; kind: string; description: string; href: string }[];
+    items: { name: string; kind: string; description: string; href: string; image: string }[];
   };
   cta: CallToAction;
 }
@@ -44,6 +46,28 @@ export const homeContent: HomeContent = {
       "Atuamos em comunidades urbanas e rurais integrando as dimensões econômica, " +
       "social, cultural e ambiental para gerar renda, autonomia e desenvolvimento " +
       "duradouro.",
+    slides: [
+      {
+        src: "/images/photos/experiencia-2.webp",
+        alt: "Inauguração da Kitanda da Kéké, no bairro Bom Jesus",
+        caption: "Kitanda da Kéké · Bom Jesus",
+      },
+      {
+        src: "/images/photos/kitanda-luana-1.webp",
+        alt: "Equipe do Instituto Camélia e a comunidade no território",
+        caption: "Instituto Camélia no território",
+      },
+      {
+        src: "/images/photos/experiencia-6.webp",
+        alt: "Encontro comunitário ao entardecer em Tavares",
+        caption: "Encontro comunitário · Tavares",
+      },
+      {
+        src: "/images/photos/kitanda-pretas-3.webp",
+        alt: "Empreendedora na inauguração da Kitanda das Pretas",
+        caption: "Kitanda das Pretas",
+      },
+    ],
     primary: { label: "Conheça o projeto", href: "/sobre" },
     secondary: { label: "Leve ao seu território", href: "/como-apoiar" },
   },
@@ -52,16 +76,19 @@ export const homeContent: HomeContent = {
       value: "100+",
       label: "famílias quilombolas atendidas",
       description: "no território rural de Tavares (RS).",
+      icon: "users",
     },
     {
       value: "20+",
       label: "negócios locais impulsionados",
       description: "no bairro Bom Jesus, em Porto Alegre.",
+      icon: "store",
     },
     {
       value: "Modelo",
       label: "replicável e adaptável",
       description: "a diferentes territórios e contextos.",
+      icon: "repeat",
     },
   ],
   about: {
@@ -76,6 +103,7 @@ export const homeContent: HomeContent = {
         "conectamos saberes tradicionais a conhecimento técnico e acadêmico — sempre " +
         "com foco em resultados concretos e duradouros.",
     ],
+    image: "/images/photos/experiencia-6.webp",
     href: "/sobre",
   },
   pillars: {
@@ -120,6 +148,7 @@ export const homeContent: HomeContent = {
           "Capacitação, mentoria e fortalecimento de empreendedores locais para gerar " +
           "renda e autonomia no bairro.",
         href: "/experiencias/bom-jesus",
+        image: "/images/photos/experiencia-1.webp",
       },
       {
         name: "Tavares",
@@ -128,6 +157,7 @@ export const homeContent: HomeContent = {
           "Estruturação de cadeias produtivas e fortalecimento de redes com mais de 100 " +
           "famílias quilombolas.",
         href: "/experiencias/tavares",
+        image: "/images/photos/experiencia-6.webp",
       },
     ],
   },

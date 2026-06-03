@@ -1,10 +1,12 @@
-import type { CallToAction, PageSeo, ProseBlock, Stat } from "./_types";
+import type { CallToAction, Feature, PageSeo, Stat } from "./_types";
 
 export interface ImpactoContent {
   seo: PageSeo;
   hero: { eyebrow: string; title: string; intro: string };
+  statsTitle: string;
   stats: Stat[];
-  blocks: ProseBlock[];
+  dimensions: { eyebrow: string; title: string; intro: string; items: Feature[] };
+  measure: { eyebrow: string; title: string; paragraphs: string[]; image: string };
   cta: CallToAction;
 }
 
@@ -22,36 +24,74 @@ export const impactoContent: ImpactoContent = {
       "Acompanhamos de perto o efeito da nossa atuação. Os números abaixo resumem " +
       "parte do que já foi construído junto às comunidades.",
   },
+  statsTitle: "O que já construímos",
   stats: [
     {
       value: "100+",
       label: "famílias quilombolas atendidas",
       description: "no território rural de Tavares (RS).",
+      icon: "users",
     },
     {
       value: "20+",
       label: "negócios locais impulsionados",
       description: "no bairro Bom Jesus, em Porto Alegre.",
+      icon: "store",
     },
     {
       value: "2",
       label: "territórios ativos",
       description: "um urbano e um rural, com modelo replicável.",
+      icon: "mappin",
     },
   ],
-  blocks: [
-    {
-      title: "Como medimos impacto",
-      paragraphs: [
-        "Mais do que contabilizar atividades, o Regenere acompanha indicadores de " +
-          "geração de renda, autonomia dos empreendimentos e fortalecimento das redes " +
-          "locais ao longo do tempo.",
-        "Esta página será atualizada periodicamente com novos indicadores, relatórios " +
-          "e histórias de transformação dos territórios.",
-        // TODO: inserir indicadores consolidados, relatórios e depoimentos reais.
-      ],
-    },
-  ],
+  dimensions: {
+    eyebrow: "Dimensões",
+    title: "Um impacto que integra quatro dimensões",
+    intro:
+      "Mais do que números, buscamos transformação em todas as dimensões da vida " +
+      "no território.",
+    items: [
+      {
+        title: "Econômica",
+        description:
+          "Geração de renda, acesso a crédito e fortalecimento de empreendimentos " +
+          "locais.",
+        icon: "store",
+      },
+      {
+        title: "Social",
+        description:
+          "Inclusão produtiva, autonomia das famílias e redução de desigualdades.",
+        icon: "users",
+      },
+      {
+        title: "Cultural",
+        description:
+          "Valorização de saberes tradicionais e das identidades de cada território.",
+        icon: "sparkles",
+      },
+      {
+        title: "Ambiental",
+        description:
+          "Práticas sustentáveis e regeneração na relação entre comunidade e território.",
+        icon: "leaf",
+      },
+    ],
+  },
+  measure: {
+    eyebrow: "Transparência",
+    title: "Como acompanhamos o impacto",
+    paragraphs: [
+      "Mais do que contabilizar atividades, o Regenere acompanha indicadores de " +
+        "geração de renda, autonomia dos empreendimentos e fortalecimento das redes " +
+        "locais ao longo do tempo.",
+      "Esta página será atualizada periodicamente com novos indicadores, relatórios e " +
+        "histórias de transformação dos territórios.",
+      // TODO: inserir indicadores consolidados, relatórios e depoimentos reais.
+    ],
+    image: "/images/photos/metodologia-resultados.webp",
+  },
   cta: {
     title: "Ajude a ampliar esse impacto.",
     primary: { label: "Como apoiar", href: "/como-apoiar" },

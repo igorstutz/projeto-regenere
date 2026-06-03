@@ -62,13 +62,27 @@ src/
 - **SEO de primeira classe**: metadados por página, `sitemap.xml`, `robots.txt`,
   canonical, Open Graph e JSON-LD.
 
+## Imagens
+
+As imagens são reaproveitadas do site original e otimizadas para **WebP** pelo
+script `scripts/import-images.mjs` (usa `sharp`). Ficam em `public/images/`
+(`brand/`, `sponsors/`, `partners/`, `photos/`). Para reimportar/atualizar:
+
+```bash
+node scripts/import-images.mjs
+```
+
+O `next/image` está em modo `unoptimized` (`next.config.ts`) — serve os WebP
+diretamente, ideal para hospedagem estática. O componente `MediaPlaceholder`
+mostra a imagem real quando recebe `src`, ou um placeholder decorativo on-brand.
+
 ## Pendências conhecidas (marcadas com `// TODO` no código)
 
-- Substituir o logo provisório (`components/layout/logo.tsx`) pela marca oficial.
 - Confirmar dados de contato em `config/site.ts` (telefone/endereços parecem demo).
 - Conectar o formulário de contato a um backend/serviço (hoje usa `mailto`).
 - Revisão jurídica da Política de Privacidade (`content/privacidade.ts`).
-- Inserir imagens reais dos territórios e os nomes/logos completos dos parceiros.
+- Confirmar a divisão das fotos de experiência entre Bom Jesus × Tavares
+  (`content/experiencias.ts`) e os nomes dos 13 logos de parceiros.
 
 > **Atenção:** este é o Next.js 16, que tem diferenças relevantes em relação a versões
 > anteriores. A documentação oficial vem empacotada em `node_modules/next/dist/docs/`.

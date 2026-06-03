@@ -1,0 +1,282 @@
+{
+  "public/images/brand/logo.webp": {
+    "width": 520,
+    "height": 529,
+    "kb": 52
+  },
+  "public/images/brand/logo-inverted.webp": {
+    "width": 87,
+    "height": 87,
+    "kb": 1
+  },
+  "public/images/sponsors/brde.webp": {
+    "width": 360,
+    "height": 203,
+    "kb": 3
+  },
+  "public/images/sponsors/regenera.webp": {
+    "width": 360,
+    "height": 203,
+    "kb": 4
+  },
+  "public/images/sponsors/umpe.webp": {
+    "width": 360,
+    "height": 127,
+    "kb": 7
+  },
+  "public/images/photos/kitanda-luana-1.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 296
+  },
+  "public/images/photos/kitanda-luana-2.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 157
+  },
+  "public/images/photos/kitanda-luana-3.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 146
+  },
+  "public/images/photos/kitanda-pretas-1.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 255
+  },
+  "public/images/photos/kitanda-pretas-2.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 165
+  },
+  "public/images/photos/kitanda-pretas-3.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 83
+  },
+  "public/images/photos/kitanda-luana-4.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 389
+  },
+  "public/images/photos/kitanda-luana-5.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 316
+  },
+  "public/images/photos/kitanda-luana-6.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 125
+  },
+  "public/images/photos/kitanda-luana-7.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 148
+  },
+  "public/images/photos/kitanda-luana-8.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 73
+  },
+  "public/images/photos/kitanda-luana-9.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 118
+  },
+  "public/images/photos/kitanda-luana-10.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 156
+  },
+  "public/images/photos/kitanda-pretas-4.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 280
+  },
+  "public/images/photos/kitanda-pretas-5.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 179
+  },
+  "public/images/photos/kitanda-pretas-6.webp": {
+    "width": 1400,
+    "height": 1050,
+    "kb": 130
+  },
+  "public/images/photos/kitanda-pretas-7.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 69
+  },
+  "public/images/photos/kitanda-pretas-8.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 72
+  },
+  "public/images/photos/feira-1.webp": {
+    "width": 1400,
+    "height": 1050,
+    "kb": 80
+  },
+  "public/images/photos/feira-2.webp": {
+    "width": 1080,
+    "height": 810,
+    "kb": 86
+  },
+  "public/images/photos/articulacao-1.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 139
+  },
+  "public/images/photos/experiencia-1.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 185
+  },
+  "public/images/photos/experiencia-2.webp": {
+    "width": 1400,
+    "height": 788,
+    "kb": 121
+  },
+  "public/images/photos/experiencia-3.webp": {
+    "width": 1005,
+    "height": 754,
+    "kb": 116
+  },
+  "public/images/photos/experiencia-4.webp": {
+    "width": 1005,
+    "height": 754,
+    "kb": 112
+  },
+  "public/images/photos/experiencia-5.webp": {
+    "width": 1400,
+    "height": 788,
+    "kb": 164
+  },
+  "public/images/photos/experiencia-6.webp": {
+    "width": 1400,
+    "height": 733,
+    "kb": 62
+  },
+  "public/images/photos/experiencia-7.webp": {
+    "width": 1280,
+    "height": 960,
+    "kb": 168
+  },
+  "public/images/photos/experiencia-8.webp": {
+    "width": 1400,
+    "height": 1050,
+    "kb": 136
+  },
+  "public/images/photos/home-hero.webp": {
+    "width": 1280,
+    "height": 1920,
+    "kb": 141
+  },
+  "public/images/photos/sobre-1.webp": {
+    "width": 1152,
+    "height": 1440,
+    "kb": 21
+  },
+  "public/images/photos/sobre-2.webp": {
+    "width": 1400,
+    "height": 933,
+    "kb": 129
+  },
+  "public/images/photos/metodologia-comunidade.webp": {
+    "width": 1400,
+    "height": 788,
+    "kb": 149
+  },
+  "public/images/photos/metodologia-diagnostico.webp": {
+    "width": 1400,
+    "height": 788,
+    "kb": 144
+  },
+  "public/images/photos/metodologia-resultados.webp": {
+    "width": 1400,
+    "height": 788,
+    "kb": 62
+  },
+  "public/images/photos/metodologia-planejamento.webp": {
+    "width": 1400,
+    "height": 788,
+    "kb": 91
+  },
+  "public/images/photos/metodologia-produtos.webp": {
+    "width": 1400,
+    "height": 788,
+    "kb": 112
+  },
+  "public/images/photos/metodologia-aprender.webp": {
+    "width": 1400,
+    "height": 788,
+    "kb": 118
+  },
+  "public/images/partners/1.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 7
+  },
+  "public/images/partners/2.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 3
+  },
+  "public/images/partners/3.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 2
+  },
+  "public/images/partners/4.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 6
+  },
+  "public/images/partners/5.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 7
+  },
+  "public/images/partners/6.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 5
+  },
+  "public/images/partners/7.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 5
+  },
+  "public/images/partners/8.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 7
+  },
+  "public/images/partners/9.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 5
+  },
+  "public/images/partners/10.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 7
+  },
+  "public/images/partners/11.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 5
+  },
+  "public/images/partners/12.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 8
+  },
+  "public/images/partners/13.webp": {
+    "width": 320,
+    "height": 120,
+    "kb": 5
+  }
+}

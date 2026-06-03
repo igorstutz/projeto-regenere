@@ -9,6 +9,8 @@ export interface Stat {
   value: string;
   label: string;
   description?: string;
+  /** Ícone opcional: "users" | "store" | "repeat" | "leaf". */
+  icon?: string;
 }
 
 /** Item de destaque com título e descrição (pilares, diferenciais, etc.). */

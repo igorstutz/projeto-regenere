@@ -1,4 +1,4 @@
-import type { CallToAction, Feature, PageSeo, Stat } from "./_types";
+import type { CallToAction, PageSeo, Stat } from "./_types";
 
 /** Estudo de caso de um território onde o Regenere atua. */
 export interface ExperienceCase {
@@ -8,13 +8,21 @@ export interface ExperienceCase {
   kind: string;
   /** Localização legível, ex.: "Porto Alegre · RS". */
   location: string;
+  /** Tagline da experiência. */
+  subtitle: string;
   /** Resumo de uma frase (usado em listagens). */
   summary: string;
   seo: PageSeo;
+  /** Imagem principal (cartão e destaque). */
+  image: string;
+  /** Galeria de fotos do território. */
+  gallery: string[];
   /** Parágrafos de contexto do território. */
   context: string[];
-  /** Ações realizadas no território. */
-  actions: Feature[];
+  /** Ações realizadas (lista de itens). */
+  actions: string[];
+  /** Objetivo / foco da experiência. */
+  objective: string;
   /** Resultados quantificáveis. */
   results: Stat[];
 }
@@ -32,10 +40,11 @@ export const experiencesIndex: {
   },
   hero: {
     eyebrow: "Experiências",
-    title: "O método na prática, em territórios reais.",
+    title: "Iniciativas que inspiram, em contextos urbanos e rurais.",
     intro:
-      "Cada experiência mostra como a metodologia do Regenere se adapta ao contexto " +
-      "— gerando renda, autonomia e fortalecimento das redes locais.",
+      "Iniciativas já implementadas com foco na geração de renda, no fortalecimento " +
+      "produtivo e no desenvolvimento territorial — cada uma adaptada à realidade do " +
+      "seu território.",
   },
   cta: {
     title: "Quer levar uma experiência como essas ao seu território?",
@@ -50,38 +59,42 @@ export const experienceCases: ExperienceCase[] = [
     name: "Bom Jesus",
     kind: "Território urbano",
     location: "Porto Alegre · RS",
+    subtitle: "Fortalecimento do empreendedorismo local",
     summary:
       "Capacitação e mentoria para empreendedores locais, fortalecendo a economia " +
       "do bairro.",
     seo: {
       title: "Experiência Bom Jesus",
       description:
-        "No bairro Bom Jesus, em Porto Alegre, o Regenere fortaleceu mais de 20 " +
-        "negócios locais por meio de capacitação, mentoria e acesso a mercado.",
+        "No bairro Bom Jesus, em Porto Alegre, o Regenere fortalece o empreendedorismo " +
+        "local com capacitação, mentoria, acesso a crédito e redes produtivas.",
     },
+    image: "/images/photos/experiencia-2.webp",
+    gallery: [
+      "/images/photos/experiencia-1.webp",
+      "/images/photos/experiencia-7.webp",
+      "/images/photos/experiencia-8.webp",
+    ],
     context: [
-      "O bairro Bom Jesus, em Porto Alegre, reúne uma rica diversidade de " +
-        "empreendedores e iniciativas comunitárias. O Regenere atuou no fortalecimento " +
-        "desses negócios, ampliando capacidade de gestão, acesso a mercado e geração de " +
-        "renda.",
+      "O piloto urbano do Programa Regenere atua no bairro Bom Jesus, em Porto Alegre, " +
+        "com foco na inclusão socioeconômica e no fortalecimento do empreendedorismo " +
+        "local.",
+      "A diversidade de negócios e iniciativas comunitárias do bairro é o ponto de " +
+        "partida: o programa amplia capacidade de gestão, acesso a mercado e geração de " +
+        "renda junto a quem já empreende ali.",
     ],
     actions: [
-      {
-        title: "Capacitação",
-        description: "Formação prática em gestão, finanças e vendas para empreendedores.",
-      },
-      {
-        title: "Mentoria",
-        description: "Acompanhamento individualizado dos negócios locais.",
-      },
-      {
-        title: "Acesso a mercado",
-        description: "Apoio à comercialização e à conexão com novos canais de venda.",
-      },
+      "Capacitação e mentoria para empreendedores",
+      "Acesso a crédito e microcrédito",
+      "Plataforma digital de gestão e comercialização",
+      "Fortalecimento de redes produtivas locais",
+      "Eventos culturais e comunitários",
     ],
+    objective:
+      "Criar um ecossistema sustentável capaz de gerar renda, reduzir desigualdades e " +
+      "servir como modelo replicável.",
     results: [
-      { value: "20+", label: "negócios locais impulsionados" },
-      // TODO: complementar com indicadores adicionais e depoimentos.
+      { value: "20+", label: "negócios locais impulsionados", icon: "store" },
     ],
   },
   {
@@ -89,36 +102,40 @@ export const experienceCases: ExperienceCase[] = [
     name: "Tavares",
     kind: "Território rural · comunidade quilombola",
     location: "Tavares · RS",
+    subtitle: "Desenvolvimento produtivo em comunidades quilombolas",
     summary:
       "Estruturação de cadeias produtivas junto a mais de 100 famílias quilombolas.",
     seo: {
       title: "Experiência Tavares",
       description:
-        "Em Tavares, o Regenere atuou com mais de 100 famílias quilombolas na " +
-        "estruturação de cadeias produtivas e no fortalecimento das redes locais.",
+        "Em Tavares, o Regenere fortalece a produção agrícola e a autonomia de mais de " +
+        "100 famílias quilombolas, com estruturação produtiva e acesso a mercados.",
     },
+    image: "/images/photos/experiencia-6.webp",
+    gallery: [
+      "/images/photos/experiencia-3.webp",
+      "/images/photos/experiencia-4.webp",
+      "/images/photos/experiencia-5.webp",
+    ],
     context: [
-      "Em Tavares, no Rio Grande do Sul, o Regenere atuou junto a comunidades " +
-        "quilombolas no fortalecimento da produção local e na organização de cadeias " +
-        "produtivas, valorizando saberes tradicionais e gerando renda no território.",
+      "No contexto rural, o Programa Regenere atua junto a comunidades quilombolas de " +
+        "Tavares, no Rio Grande do Sul, promovendo o fortalecimento da produção agrícola " +
+        "e a autonomia das famílias.",
+      "O trabalho valoriza os saberes tradicionais e organiza a produção local, " +
+        "conectando as famílias a crédito, infraestrutura e mercados.",
     ],
     actions: [
-      {
-        title: "Estruturação produtiva",
-        description: "Organização das cadeias produtivas locais.",
-      },
-      {
-        title: "Fortalecimento de redes",
-        description: "Articulação entre famílias, instituições e mercado.",
-      },
-      {
-        title: "Valorização cultural",
-        description: "Reconhecimento e valorização dos saberes quilombolas.",
-      },
+      "Estruturação da cadeia produtiva",
+      "Construção de infraestrutura de armazenagem",
+      "Acesso a crédito rural",
+      "Capacitação técnica e produtiva",
+      "Conexão com mercados e redes de comercialização",
     ],
+    objective:
+      "Reduzir perdas, aumentar a renda e valorizar modos de vida tradicionais, com " +
+      "base em práticas sustentáveis.",
     results: [
-      { value: "100+", label: "famílias quilombolas atendidas" },
-      // TODO: complementar com indicadores adicionais e depoimentos.
+      { value: "100+", label: "famílias quilombolas atendidas", icon: "users" },
     ],
   },
 ];

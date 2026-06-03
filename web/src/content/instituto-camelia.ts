@@ -1,13 +1,28 @@
-import type { CallToAction, Feature, PageSeo, ProseBlock } from "./_types";
+import type { CallToAction, PageSeo } from "./_types";
 
 export interface InstitutoContent {
   seo: PageSeo;
   hero: { eyebrow: string; title: string; intro: string };
-  blocks: ProseBlock[];
-  objectives: { title: string; items: Feature[] };
-  initiatives: { title: string; items: { name: string; description: string }[] };
+  about: { eyebrow: string; title: string; paragraphs: string[]; image: string };
+  objectives: { title: string; items: string[]; conclusion: string };
+  initiatives: { name: string; description: string; gallery: string[] }[];
+  actions: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    gallery: { src: string; caption: string }[];
+  };
   cta: CallToAction;
 }
+
+const luanaGallery = Array.from(
+  { length: 10 },
+  (_, i) => `/images/photos/kitanda-luana-${i + 1}.webp`,
+);
+const pretasGallery = Array.from(
+  { length: 8 },
+  (_, i) => `/images/photos/kitanda-pretas-${i + 1}.webp`,
+);
 
 export const institutoContent: InstitutoContent = {
   seo: {
@@ -18,64 +33,64 @@ export const institutoContent: InstitutoContent = {
   },
   hero: {
     eyebrow: "Instituto Camélia",
-    title: "A organização por trás do Regenere.",
+    title: "Quem está por trás do Regenere.",
     intro:
-      "O Instituto Camélia idealiza e conduz o Projeto Regenere, atuando como ponte " +
-      "entre comunidades, instituições de ensino e os setores público e privado.",
+      "O Instituto Camélia é o articulador e coordenador do Programa Regenere, " +
+      "atuando na conexão entre comunidades, instituições de ensino e os setores " +
+      "público e privado.",
   },
-  blocks: [
+  about: {
+    eyebrow: "O Instituto",
+    title: "Catalisador de transformações nos territórios",
+    paragraphs: [
+      "A atuação do Instituto Camélia é orientada pela promoção do desenvolvimento " +
+        "territorial regenerativo, com foco na inclusão produtiva, na valorização " +
+        "cultural e no fortalecimento de redes socioprodutivas.",
+    ],
+    image: "/images/photos/kitanda-luana-7.webp",
+  },
+  objectives: {
+    title: "O Instituto trabalha para:",
+    items: [
+      "Integrar conhecimento acadêmico e prática territorial",
+      "Fortalecer empreendimentos locais",
+      "Promover inovação social e econômica",
+      "Valorizar saberes tradicionais e identidades culturais",
+      "Impulsionar políticas públicas e soluções sustentáveis",
+    ],
+    conclusion:
+      "Com uma abordagem colaborativa e multidisciplinar, o Instituto Camélia atua " +
+      "como catalisador de transformações estruturais nos territórios.",
+  },
+  initiatives: [
     {
-      paragraphs: [
-        "O Instituto Camélia trabalha para integrar conhecimento acadêmico e prática " +
-          "territorial, fortalecendo empreendimentos locais e promovendo inovação " +
-          "social com valorização dos saberes tradicionais.",
-      ],
+      name: "Kitanda da Luana",
+      description:
+        "Fortalecimento do empreendedorismo comunitário e geração de renda local em " +
+        "território periférico.",
+      gallery: luanaGallery,
+    },
+    {
+      name: "Kitanda das Pretas",
+      description:
+        "Ação de empreendedorismo periférico com foco em autonomia econômica e " +
+        "fortalecimento comunitário.",
+      gallery: pretasGallery,
     },
   ],
-  objectives: {
-    title: "O que buscamos",
-    items: [
+  actions: {
+    eyebrow: "No território",
+    title: "Feiras, eventos e articulação",
+    intro:
+      "Atividades de articulação territorial, valorização da produção local e " +
+      "conexão com redes de apoio, em parceria com organizações e apoiadores.",
+    gallery: [
       {
-        title: "Conectar saberes",
-        description:
-          "Integrar conhecimento técnico-acadêmico e saberes da comunidade.",
+        src: "/images/photos/feira-1.webp",
+        caption: "Feira da Semana da Consciência Negra · Porto Alegre",
       },
-      {
-        title: "Fortalecer negócios locais",
-        description: "Apoiar micro e pequenos empreendimentos a crescer com autonomia.",
-      },
-      {
-        title: "Articular instituições",
-        description:
-          "Aproximar universidades, poder público e setor privado dos territórios.",
-      },
-      {
-        title: "Promover inovação social",
-        description:
-          "Desenvolver soluções que respeitam a cultura e o contexto de cada lugar.",
-      },
-      {
-        title: "Gerar renda e autonomia",
-        description:
-          "Criar condições para desenvolvimento econômico sustentável e duradouro.",
-      },
-    ],
-  },
-  initiatives: {
-    title: "Iniciativas",
-    items: [
-      {
-        name: "Kitanda da Luana",
-        description:
-          "Iniciativa de empreendedorismo que apoia a geração de renda no território.",
-        // TODO: descrição completa a confirmar com a equipe.
-      },
-      {
-        name: "Kitanda das Pretas",
-        description:
-          "Iniciativa voltada à autonomia econômica e ao protagonismo comunitário.",
-        // TODO: descrição completa a confirmar com a equipe.
-      },
+      { src: "/images/photos/feira-2.webp", caption: "Prêmio Periferia Viva" },
+      { src: "/images/photos/articulacao-1.webp", caption: "Visita ao CD da REDECOOP" },
     ],
   },
   cta: {

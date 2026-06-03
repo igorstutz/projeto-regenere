@@ -1,9 +1,17 @@
-import type { CallToAction, Feature, PageSeo } from "./_types";
+import type { CallToAction, Feature, PageSeo, Step } from "./_types";
 
 export interface ComoApoiarContent {
   seo: PageSeo;
   hero: { eyebrow: string; title: string; intro: string };
-  paths: { title: string; intro: string; items: Feature[] };
+  paths: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: { title: string; description: string; icon: string; items: string[] }[];
+  };
+  highlight: { statement: string; image: string };
+  enables: { eyebrow: string; title: string; intro: string; items: Feature[] };
+  steps: { eyebrow: string; title: string; intro: string; items: Step[] };
   cta: CallToAction;
 }
 
@@ -16,32 +24,115 @@ export const comoApoiarContent: ComoApoiarContent = {
   },
   hero: {
     eyebrow: "Como apoiar",
-    title: "Leve o Regenere ao seu território.",
+    title: "Apoie quem transforma territórios.",
     intro:
-      "Trabalhamos com quem busca soluções de impacto integrado. Há diferentes " +
-      "formas de caminhar com a gente — escolha a que faz sentido para você.",
+      "O Regenere existe graças a quem acredita no desenvolvimento que nasce das " +
+      "pessoas. Há diferentes formas de caminhar com a gente — escolha a que faz " +
+      "sentido para você.",
   },
   paths: {
-    title: "Formas de apoiar",
-    intro: "Cada perfil contribui de um jeito para ampliar o impacto.",
+    eyebrow: "Formas de apoiar",
+    title: "Cada perfil contribui de um jeito",
+    intro: "Encontre o caminho de apoio que combina com você ou a sua organização.",
     items: [
       {
         title: "Empresas e patrocinadores",
         description:
-          "Patrocine o programa e associe sua marca a um impacto social mensurável " +
-          "nos territórios.",
+          "Associe sua marca a um impacto social mensurável e contínuo nos " +
+          "territórios.",
+        icon: "store",
+        items: [
+          "Patrocínio de editais e iniciativas",
+          "Investimento social privado",
+          "Marca associada a impacto real",
+        ],
       },
       {
         title: "Instituições e universidades",
         description:
           "Some conhecimento, pesquisa e extensão ao trabalho desenvolvido nas " +
           "comunidades.",
+        icon: "users",
+        items: [
+          "Pesquisa e extensão",
+          "Assistência técnica",
+          "Formação e capacitação",
+        ],
       },
       {
         title: "Comunidades e lideranças",
         description:
           "Quer levar a metodologia ao seu território? Vamos construir esse caminho " +
           "juntos.",
+        icon: "mappin",
+        items: [
+          "Diagnóstico do território",
+          "Implementação da metodologia",
+          "Fortalecimento de redes locais",
+        ],
+      },
+    ],
+  },
+  highlight: {
+    statement:
+      "Apoiar o Regenere é investir em territórios que se transformam de dentro para " +
+      "fora — com renda, autonomia e dignidade.",
+    image: "/images/photos/metodologia-comunidade.webp",
+  },
+  enables: {
+    eyebrow: "O seu apoio em ação",
+    title: "O que o seu apoio possibilita",
+    intro:
+      "Cada apoio se converte em ações concretas que fortalecem as comunidades.",
+    items: [
+      {
+        title: "Capacitação e mentoria",
+        description: "Formação prática para empreendedores e organizações locais.",
+        icon: "lightbulb",
+      },
+      {
+        title: "Acesso a crédito",
+        description: "Conexão com crédito e microcrédito para os negócios crescerem.",
+        icon: "trendingUp",
+      },
+      {
+        title: "Plataforma UMPE",
+        description: "Tecnologia de gestão, capacitação e acesso a mercado.",
+        icon: "sparkles",
+      },
+      {
+        title: "Redes socioprodutivas",
+        description: "Articulação entre empreendedores, instituições e mercados.",
+        icon: "network",
+      },
+      {
+        title: "Estrutura produtiva",
+        description: "Organização de cadeias e infraestrutura para a produção local.",
+        icon: "store",
+      },
+      {
+        title: "Eventos e articulação",
+        description: "Feiras, encontros e ações culturais que fortalecem o território.",
+        icon: "users",
+      },
+    ],
+  },
+  steps: {
+    eyebrow: "Como começar",
+    title: "Três passos para caminhar com a gente",
+    intro: "Simples e direto: a conversa começa quando você quiser.",
+    items: [
+      {
+        title: "Converse com a gente",
+        description: "Conte quem você é e como gostaria de apoiar o programa.",
+      },
+      {
+        title: "Construímos o plano juntos",
+        description: "Desenhamos a parceria conforme o contexto e os objetivos.",
+      },
+      {
+        title: "Impacto no território",
+        description: "Colocamos em prática e acompanhamos os resultados, juntos.",
       },
     ],
   },
@@ -51,5 +142,6 @@ export const comoApoiarContent: ComoApoiarContent = {
       "Conte para a gente quem você é e como gostaria de apoiar. Retornaremos o " +
       "contato.",
     primary: { label: "Falar com a equipe", href: "/contato" },
+    secondary: { label: "Ver o impacto", href: "/impacto" },
   },
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { mainNav, primaryCta } from "@/config/navigation";
@@ -19,9 +19,22 @@ function isActive(pathname: string, href: string): boolean {
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b bg-background/80 backdrop-blur transition-shadow duration-300",
+        scrolled ? "border-border shadow-sm" : "border-transparent",
+      )}
+    >
       <Container size="wide">
         <div className="flex h-16 items-center justify-between gap-4">
           <Logo />

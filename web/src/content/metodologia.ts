@@ -3,9 +3,21 @@ import type { CallToAction, Feature, PageSeo, Step } from "./_types";
 export interface MetodologiaContent {
   seo: PageSeo;
   hero: { eyebrow: string; title: string; intro: string };
-  pillars: { title: string; intro: string; items: Feature[] };
-  steps: { title: string; intro: string; items: Step[] };
-  platform: { eyebrow: string; title: string; paragraphs: string[] };
+  approach: { eyebrow: string; title: string; paragraphs: string[]; image: string };
+  frameworks: { eyebrow: string; title: string; intro: string; items: Feature[] };
+  platform: {
+    eyebrow: string;
+    title: string;
+    paragraphs: string[];
+    items: string[];
+  };
+  steps: { eyebrow: string; title: string; intro: string; items: Step[] };
+  encounters: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    gallery: { src: string; caption: string }[];
+  };
   cta: CallToAction;
 }
 
@@ -13,103 +25,144 @@ export const metodologiaContent: MetodologiaContent = {
   seo: {
     title: "Metodologia",
     description:
-      "A metodologia do Projeto Regenere: pilares, etapas de atuação nos " +
-      "territórios e a plataforma UMPE de apoio aos empreendimentos locais.",
+      "A metodologia do Projeto Regenere: uma abordagem integrada e participativa, " +
+      "com frameworks de gestão, a plataforma UMPE e um ciclo contínuo de atuação.",
   },
   hero: {
     eyebrow: "Metodologia",
-    title: "Um método estruturado, replicável e enraizado no território.",
+    title: "Um método integrado, participativo e orientado a resultados.",
     intro:
-      "Nossa metodologia organiza a atuação em pilares e etapas claras, do " +
-      "diagnóstico à autonomia — adaptável a diferentes contextos urbanos e rurais.",
+      "Combinamos ferramentas de gestão, inovação social, tecnologia e educação para " +
+      "promover o desenvolvimento de territórios urbanos e rurais de forma sustentável.",
   },
-  pillars: {
-    title: "Os pilares da metodologia",
-    intro:
-      "Cada território é único, mas a forma como atuamos se apoia em pilares comuns.",
-    items: [
-      {
-        title: "Diagnóstico participativo",
-        description:
-          "Mapeamos vocações, ativos e desafios do território junto com a comunidade.",
-      },
-      {
-        title: "Fortalecimento de empreendimentos",
-        description:
-          "Capacitação, mentoria e ferramentas para que os negócios locais cresçam " +
-          "com solidez.",
-      },
-      {
-        title: "Redes socioprodutivas",
-        description:
-          "Conexão entre produtores, empreendedores, instituições e poder público.",
-      },
-      {
-        title: "Acesso a mercado",
-        description:
-          "Apoio à comercialização, à participação em feiras e à abertura de novos " +
-          "canais de venda.",
-      },
-      {
-        title: "Monitoramento de impacto",
-        description:
-          "Indicadores que acompanham a evolução e orientam decisões ao longo do " +
-          "caminho.",
-      },
+  approach: {
+    eyebrow: "A abordagem",
+    title: "Uma visão sistêmica do território",
+    paragraphs: [
+      "A metodologia do Programa Regenere combina ferramentas de gestão, inovação " +
+        "social, tecnologia e educação para promover o desenvolvimento de territórios " +
+        "urbanos e rurais de forma sustentável.",
+      "A atuação é orientada por uma abordagem sistêmica, que integra diferentes " +
+        "dimensões — econômica, social, cultural e ambiental — respeitando as " +
+        "especificidades de cada território.",
     ],
+    image: "/images/photos/metodologia-comunidade.webp",
   },
-  steps: {
-    title: "Como funciona, etapa por etapa",
+  frameworks: {
+    eyebrow: "Pilares",
+    title: "Os frameworks que estruturam a atuação",
     intro:
-      "Da chegada ao território até a consolidação da autonomia local.",
+      "A metodologia se apoia em ferramentas consagradas de gestão, planejamento e " +
+      "aprendizagem, adaptadas à realidade de cada território.",
     items: [
       {
-        title: "Escuta e diagnóstico",
+        title: "Modelo C",
         description:
-          "Imersão no território para compreender contexto, lideranças e " +
-          "oportunidades.",
+          "Estrutura a atuação com base em completude, colaboração, adaptabilidade e " +
+          "conexão com a realidade local.",
+        icon: "network",
       },
       {
-        title: "Planejamento conjunto",
+        title: "Teoria da Mudança",
         description:
-          "Definição de prioridades e metas com a participação da comunidade.",
+          "Orienta o planejamento estratégico com definição de objetivos, indicadores " +
+          "e acompanhamento contínuo dos resultados.",
+        icon: "target",
       },
       {
-        title: "Capacitação e mentoria",
+        title: "Project Model Canvas (PMC)",
         description:
-          "Formação prática para empreendedores e organizações locais.",
+          "Permite a estruturação ágil dos projetos, facilitando o alinhamento entre " +
+          "os atores envolvidos.",
+        icon: "clipboard",
       },
       {
-        title: "Estruturação produtiva",
+        title: "Business Model Canvas (BMC)",
         description:
-          "Organização de cadeias produtivas e fortalecimento dos negócios.",
+          "Apoia a organização e a sustentabilidade dos empreendimentos, com foco em " +
+          "viabilidade econômica e impacto.",
+        icon: "store",
       },
       {
-        title: "Articulação de redes",
+        title: "Aprendizagem Baseada em Projetos (ABP)",
         description:
-          "Conexão com instituições, mercado e poder público para ampliar alcance.",
-      },
-      {
-        title: "Autonomia e continuidade",
-        description:
-          "Consolidação dos resultados para que a transformação se sustente no tempo.",
+          "Conecta teoria e prática por meio de desafios reais dos territórios, " +
+          "promovendo soluções aplicadas.",
+        icon: "lightbulb",
       },
     ],
   },
   platform: {
-    eyebrow: "Plataforma UMPE",
-    title: "Tecnologia a serviço dos empreendimentos locais.",
+    eyebrow: "Tecnologia",
+    title: "Plataforma UMPE",
     paragraphs: [
-      "A plataforma UMPE (Universo MPE) apoia o acompanhamento e o fortalecimento dos " +
-        "micro e pequenos empreendimentos atendidos pelo programa.",
-      "Ela conecta dados, formação e gestão em um só lugar, ajudando empreendedores e " +
-        "a equipe do Regenere a tomar decisões com base em informação.",
-      // TODO: detalhar funcionalidades da UMPE com a equipe do projeto.
+      "A metodologia do Regenere é potencializada pela plataforma UMPE (Universo do " +
+        "Micro e Pequeno Empreendedor), que funciona como infraestrutura digital para a " +
+        "execução e a escalabilidade das ações.",
+      "Ela fortalece a gestão dos negócios e amplia a inclusão produtiva e digital nos " +
+        "territórios, reunindo num único ambiente:",
+    ],
+    items: [
+      "Gestão de empreendimentos",
+      "Acesso a crédito e serviços financeiros",
+      "Capacitação e qualificação",
+      "Mentorias e assessoramento técnico",
+      "Ferramentas de comercialização",
+      "Conexão entre empreendedores, instituições e mercados",
+    ],
+  },
+  steps: {
+    eyebrow: "Como funciona",
+    title: "Um ciclo contínuo de desenvolvimento territorial",
+    intro: "Da chegada ao território à consolidação e replicação do modelo.",
+    items: [
+      {
+        title: "Territorialização",
+        description: "Diagnóstico social, econômico e ambiental do território.",
+      },
+      {
+        title: "Priorização de demandas",
+        description: "Identificação de necessidades e oportunidades locais.",
+      },
+      {
+        title: "Planejamento",
+        description: "Estruturação das ações e projetos.",
+      },
+      {
+        title: "Execução",
+        description: "Implementação de soluções, capacitações e acesso a recursos.",
+      },
+      {
+        title: "Monitoramento e avaliação",
+        description: "Acompanhamento contínuo por meio de indicadores.",
+      },
+      {
+        title: "Sistematização",
+        description: "Consolidação de aprendizados e replicação do modelo.",
+      },
+    ],
+  },
+  encounters: {
+    eyebrow: "Nossos encontros",
+    title: "Espaços de escuta e construção coletiva",
+    intro:
+      "A metodologia se faz no encontro: rodas de conversa, escuta ativa e " +
+      "fortalecimento das redes locais, no chão de cada território.",
+    gallery: [
+      { src: "/images/photos/metodologia-planejamento.webp", caption: "Planejamento participativo" },
+      { src: "/images/photos/metodologia-aprender.webp", caption: "Aprender fazendo" },
+      { src: "/images/photos/metodologia-resultados.webp", caption: "Monitoramento de resultados" },
+      { src: "/images/photos/metodologia-diagnostico.webp", caption: "Diagnóstico no território" },
+      { src: "/images/photos/metodologia-produtos.webp", caption: "Produtos da terra" },
+      { src: "/images/photos/kitanda-luana-1.webp", caption: "Construção coletiva" },
     ],
   },
   cta: {
-    title: "Veja a metodologia transformando territórios reais.",
-    primary: { label: "Conhecer as experiências", href: "/experiencias" },
-    secondary: { label: "Levar ao meu território", href: "/como-apoiar" },
+    title: "Leve o Regenere para o seu território.",
+    description:
+      "Se você atua em uma comunidade, iniciativa ou organização e quer desenvolver " +
+      "soluções integradas de impacto, fale com a gente.",
+    primary: { label: "Como apoiar", href: "/como-apoiar" },
+    secondary: { label: "Falar com a equipe", href: "/contato" },
   },
 };

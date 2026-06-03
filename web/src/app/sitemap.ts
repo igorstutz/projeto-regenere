@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/seo";
 
+export const dynamic = "force-static";
+
 type ChangeFreq = MetadataRoute.Sitemap[number]["changeFrequency"];
 
 /**

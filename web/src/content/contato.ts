@@ -3,6 +3,8 @@ import type { PageSeo } from "./_types";
 export interface ContatoContent {
   seo: PageSeo;
   hero: { eyebrow: string; title: string; intro: string };
+  panel: { title: string; text: string };
+  formTitle: string;
   formNote: string;
 }
 
@@ -20,6 +22,13 @@ export const contatoContent: ContatoContent = {
       "Quer apoiar, ser parceiro ou levar o Regenere ao seu território? Envie uma " +
       "mensagem — teremos prazer em conversar.",
   },
+  panel: {
+    title: "Vamos conversar",
+    text:
+      "Escolha o canal que preferir ou preencha o formulário ao lado. Respondemos o " +
+      "mais rápido possível.",
+  },
+  formTitle: "Envie uma mensagem",
   formNote:
     "Ao enviar, você concorda com o tratamento dos seus dados conforme a nossa " +
     "Política de Privacidade.",
