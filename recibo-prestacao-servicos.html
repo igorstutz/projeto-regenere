@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recibo de Prestação de Serviços</title>
+  <style>
+    :root {
+      --azul: #1f3a5f;
+      --cinza: #555;
+      --linha: #d9d9d9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: #222;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 32px 16px;
+      line-height: 1.5;
+    }
+    .folha {
+      background: #fff;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 56px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 3px solid var(--azul);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 22px;
+      color: var(--azul);
+      margin: 0;
+      letter-spacing: .5px;
+    }
+    header .meta {
+      text-align: right;
+      font-size: 13px;
+      color: var(--cinza);
+    }
+    header .meta strong { color: #222; }
+    .valor-destaque {
+      background: var(--azul);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+    }
+    .valor-destaque .rotulo {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: .85;
+    }
+    .valor-destaque .num {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .bloco { margin-bottom: 20px; }
+    .bloco h2 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--azul);
+      border-bottom: 1px solid var(--linha);
+      padding-bottom: 5px;
+      margin: 0 0 10px;
+    }
+    .partes {
+      display: flex;
+      gap: 32px;
+    }
+    .parte { flex: 1; }
+    .parte .nome { font-weight: 600; font-size: 15px; }
+    .parte .doc { color: var(--cinza); font-size: 13px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      text-align: left;
+      padding: 7px 8px;
+      border-bottom: 1px solid var(--linha);
+    }
+    th {
+      background: #f7f9fc;
+      color: var(--azul);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    td.valor, th.valor { text-align: right; }
+    tfoot td {
+      font-weight: 700;
+      font-size: 14px;
+      border-top: 2px solid var(--azul);
+      border-bottom: none;
+    }
+    .texto-recibo {
+      background: #f7f9fc;
+      border-left: 4px solid var(--azul);
+      padding: 12px 18px;
+      font-size: 14px;
+      border-radius: 0 6px 6px 0;
+    }
+    .extenso { font-style: italic; color: var(--cinza); }
+    .assinatura {
+      margin-top: 44px;
+      text-align: center;
+    }
+    .assinatura .linha {
+      border-top: 1px solid #222;
+      width: 320px;
+      margin: 0 auto 8px;
+    }
+    .assinatura .nome { font-weight: 600; }
+    .assinatura .cpf { color: var(--cinza); font-size: 13px; }
+    .local-data {
+      margin-top: 28px;
+      text-align: right;
+      color: var(--cinza);
+      font-size: 14px;
+    }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #fff; padding: 0; }
+      .folha { box-shadow: none; max-width: 100%; padding: 0; }
+      .no-print { display: none !important; }
+    }
+    .botao-print {
+      display: block;
+      margin: 0 auto 24px;
+      background: var(--azul);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="botao-print no-print" onclick="window.print()">🖨️ Imprimir / Salvar como PDF</button>
+
+  <div class="folha">
+    <header>
+      <div>
+        <h1>RECIBO DE<br>PRESTAÇÃO DE SERVIÇOS</h1>
+      </div>
+      <div class="meta">
+        <div>Recibo nº <strong>001/2026</strong></div>
+        <div>Data de emissão: <strong>16/06/2026</strong></div>
+      </div>
+    </header>
+
+    <div class="valor-destaque">
+      <div class="rotulo">Valor deste recibo &nbsp;•&nbsp; Parcela 1 de 4</div>
+      <div class="num">R$ 1.000,00</div>
+    </div>
+
+    <div class="bloco">
+      <h2>Partes</h2>
+      <div class="partes">
+        <div class="parte">
+          <div style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Prestador (Contratado)</div>
+          <div class="nome">Igor Stutz Fonseca</div>
+          <div class="doc">CPF: 157.521.077-09</div>
+        </div>
+        <div class="parte">
+          <div style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Tomador (Contratante)</div>
+          <div class="nome">Instituto Camélia</div>
+          <div class="doc">CNPJ: 39.229.131/0001-80</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloco">
+      <h2>Descrição dos serviços</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th class="valor">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Criação e desenvolvimento de 2 (dois) websites — Projeto Regenere e Instituto Camélia — Parcela 1/4</td>
+            <td class="valor">R$ 1.000,00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total deste recibo</td>
+            <td class="valor">R$ 1.000,00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="bloco">
+      <h2>Declaração</h2>
+      <div class="texto-recibo">
+        Declaro, para os devidos fins, que recebi do tomador acima identificado a importância de
+        <strong>R$ 1.000,00</strong> <span class="extenso">(mil reais)</span>, referente à
+        <strong>parcela 1 de 4</strong> pela prestação dos serviços de
+        <strong>criação e desenvolvimento de 2 (dois) websites</strong>,
+        dando plena e geral quitação do valor ora recebido.
+      </div>
+    </div>
+
+    <div class="local-data">
+      ____________________________, 16 de junho de 2026.
+    </div>
+
+    <div class="assinatura">
+      <div class="linha"></div>
+      <div class="nome">Igor Stutz Fonseca</div>
+      <div class="cpf">CPF: 157.521.077-09</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
