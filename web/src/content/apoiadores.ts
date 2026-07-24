@@ -152,11 +152,11 @@ export const apoiadoresContent: ApoiadoresContent = {
         },
         {
           id: "cooperativa-rural",
-          name: "Cooperativa comunitária rural",
+          name: "Ajeumbó — Cooperativa do Povo",
           logo: "/images/partners/11.webp",
           description:
             "Cooperativa de integração de trabalho, produção e consumo comunitário " +
-            "rural, parceira na estruturação produtiva.", // TODO: confirmar nome oficial
+            "rural, parceira na estruturação produtiva.", // TODO: confirmar descrição da Ajeumbó
         },
         {
           id: "umpe",
