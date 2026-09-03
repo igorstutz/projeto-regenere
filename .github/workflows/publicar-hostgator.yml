@@ -1,0 +1,64 @@
+name: Publicar site (HostGator)
+
+# Toda edição feita no painel /admin vira um commit neste repositório. Este
+# workflow reconstrói o site e o envia por FTP para a HostGator — é o que faz a
+# alteração aparecer em projeto-regenere.com.br, alguns minutos depois de salvar.
+#
+# Secrets necessários (Settings → Secrets and variables → Actions):
+#   FTP_HOST, FTP_USER, FTP_PASSWORD  — obrigatórios
+#   FTP_PORT, FTP_REMOTE_DIR          — opcionais (padrão: 21 e /public_html)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - ".github/workflows/publicar-hostgator.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Uma publicação por vez. Não cancelamos a que estiver em andamento: interromper
+# um envio FTP pela metade deixaria o site com arquivos de duas versões.
+concurrency:
+  group: hostgator
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: web
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Conferir o painel de conteúdo
+        # Falha cedo e com mensagem clara se uma edição tiver removido campos
+        # que o site espera encontrar.
+        run: npm run cms:check
+
+      - name: Build (exportação estática)
+        run: npm run build
+
+      - name: Enviar para a HostGator
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+          FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
+        run: node scripts/deploy-ftp.mjs

@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "npm run cms:check && npm run build && node scripts/deploy-ftp.mjs",
+    "deploy:dry-run": "node scripts/deploy-ftp.mjs --dry-run",
+    "cms:check": "node scripts/verificar-cms.mjs"
   },
   "dependencies": {
     "next": "16.2.7",
@@ -18,10 +21,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "basic-ftp": "^6.0.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "yaml": "^2.9.0"
   }
 }

@@ -1,0 +1,1122 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+#
+# Painel de conteúdo do Projeto Regenere (Sveltia CMS).
+# ------------------------------------------------------------------------------
+# O CMS grava direto no repositório do GitHub; o GitHub Actions reconstrói o site
+# e publica na HostGator. Os caminhos abaixo são relativos à RAIZ DO REPOSITÓRIO
+# (por isso começam em `web/`).
+#
+# ⚠ Regra de ouro ao editar este arquivo: todo campo existente no JSON precisa
+# estar declarado aqui. Campos não declarados são APAGADOS quando o editor salva.
+# Rode `npm run cms:check` depois de qualquer alteração.
+
+backend:
+  name: github
+  repo: igorstutz/projeto-regenere
+  branch: main
+  # Autenticação por OAuth ("Entrar com GitHub"): descomente e aponte para o
+  # Cloudflare Worker do sveltia-cms-auth. Enquanto estiver comentado, o login
+  # é feito pelo botão "Sign In with Token" (token pessoal do GitHub).
+  # base_url: https://sveltia-cms-auth.SEU-SUBDOMINIO.workers.dev
+  commit_messages:
+    create: 'conteúdo: cria {{collection}} "{{slug}}"'
+    update: 'conteúdo: atualiza {{collection}} "{{slug}}"'
+    delete: 'conteúdo: remove {{collection}} "{{slug}}"'
+    uploadMedia: 'conteúdo: envia imagem {{path}}'
+    deleteMedia: 'conteúdo: remove imagem {{path}}'
+
+site_url: https://projeto-regenere.com.br
+display_url: https://projeto-regenere.com.br
+logo_url: /images/brand/logo.webp
+
+# Imagens enviadas pelo painel. As já existentes ficam acessíveis pelas coleções
+# de mídia abaixo (Fotos, Marca, Patrocinadores, Parceiros).
+media_folder: /web/public/images/uploads
+public_folder: /images/uploads
+
+media_libraries:
+  default:
+    config:
+      max_file_size: 10000000
+      slugify_filename: true
+      # Toda imagem enviada é convertida para WebP e reduzida — mesmo padrão das
+      # imagens já otimizadas do site.
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1800
+
+asset_collections:
+  - name: fotos
+    label: Fotos
+    media_folder: /web/public/images/photos
+    public_folder: /images/photos
+  - name: patrocinadores
+    label: Logos de patrocinadores
+    media_folder: /web/public/images/sponsors
+    public_folder: /images/sponsors
+  - name: parceiros
+    label: Logos de parceiros
+    media_folder: /web/public/images/partners
+    public_folder: /images/partners
+  - name: marca
+    label: Marca
+    media_folder: /web/public/images/brand
+    public_folder: /images/brand
+
+collections:
+  # ============================================================================
+  # PÁGINAS — cada arquivo corresponde a uma página do site.
+  # ============================================================================
+  - name: paginas
+    label: Páginas
+    editor:
+      preview: false
+    files:
+      # ---------------------------------------------------------------- Início
+      - name: home
+        label: Início
+        file: web/src/content/data/home.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo acima do título, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: subtitle, label: Subtítulo, widget: text }
+              - name: slides
+                label: Imagens do carrossel
+                label_singular: Imagem
+                widget: list
+                summary: '{{alt}}'
+                thumbnail: src
+                fields:
+                  - { name: src, label: Imagem, widget: image }
+                  - name: alt
+                    label: Texto alternativo
+                    widget: string
+                    hint: Descrição da imagem para leitores de tela e para o Google.
+                  - { name: caption, label: Legenda, widget: string, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+          - name: stats
+            label: Números em destaque
+            label_singular: Número
+            widget: list
+            summary: '{{value}} — {{label}}'
+            fields:
+              - { name: value, label: Número, widget: string, hint: 'Ex.: "100+", "12", "3 mil".' }
+              - { name: label, label: Rótulo, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: icon
+                label: Ícone
+                widget: select
+                required: false
+                options:
+                  - users
+                  - store
+                  - repeat
+                  - leaf
+                  - sparkles
+                  - network
+                  - trendingUp
+                  - mappin
+          - name: about
+            label: Bloco "O projeto"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+              - { name: image, label: Imagem, widget: image }
+              - { name: href, label: Link "saiba mais", widget: string }
+          - name: pillars
+            label: Bloco "Pilares"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: href, label: Link "saiba mais", widget: string }
+              - name: items
+                label: Pilares
+                label_singular: Pilar
+                widget: list
+                summary: '{{title}}'
+                fields:
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descrição, widget: text }
+          - name: experiences
+            label: Bloco "Experiências"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: items
+                label: Experiências em destaque
+                label_singular: Experiência
+                widget: list
+                summary: '{{name}}'
+                thumbnail: image
+                fields:
+                  - { name: name, label: Nome, widget: string }
+                  - { name: kind, label: Tipo, widget: string, hint: 'Ex.: "Território urbano".' }
+                  - { name: description, label: Descrição, widget: text }
+                  - { name: href, label: Link, widget: string }
+                  - { name: image, label: Imagem, widget: image }
+          - name: cta
+            label: Chamada final
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+
+      # ----------------------------------------------------------- O Projeto
+      - name: sobre
+        label: O Projeto (Sobre)
+        file: web/src/content/data/sobre.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - name: whatIs
+            label: Bloco "O que é"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+          - name: blocks
+            label: Blocos da história
+            label_singular: Bloco
+            widget: list
+            summary: '{{title}}'
+            thumbnail: image
+            fields:
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+              - { name: image, label: Imagem, widget: image }
+          - name: impact
+            label: Bloco "Impacto"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: stats
+                label: Números
+                label_singular: Número
+                widget: list
+                summary: '{{value}} — {{label}}'
+                fields:
+                  - { name: value, label: Número, widget: string }
+                  - { name: label, label: Rótulo, widget: string }
+                  - { name: description, label: Descrição, widget: text, required: false }
+                  - name: icon
+                    label: Ícone
+                    widget: select
+                    required: false
+                    options: [users, store, repeat, leaf, sparkles, network, trendingUp, mappin]
+          - name: highlight
+            label: Frase de destaque
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: statement, label: Frase, widget: text }
+          - name: values
+            label: Bloco "Valores"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: items
+                label: Valores
+                label_singular: Valor
+                widget: list
+                summary: '{{title}}'
+                fields:
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descrição, widget: text }
+                  - name: icon
+                    label: Ícone
+                    widget: select
+                    required: false
+                    options: [leaf, sparkles, network, users, store, repeat, target, clipboard, lightbulb, trendingUp, mappin]
+          - name: institute
+            label: Bloco "Instituto Camélia"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+              - name: items
+                label: Lista de itens
+                label_singular: Item
+                widget: list
+                field: { name: texto, label: Item, widget: string }
+              - { name: image, label: Imagem, widget: image }
+              - name: link
+                label: Link
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Endereço, widget: string }
+          - name: cta
+            label: Chamada final
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+
+      # ---------------------------------------------------------- Metodologia
+      - name: metodologia
+        label: Metodologia
+        file: web/src/content/data/metodologia.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - name: approach
+            label: Bloco "Abordagem"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+              - { name: image, label: Imagem, widget: image }
+          - name: frameworks
+            label: Bloco "Referenciais"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: items
+                label: Referenciais
+                label_singular: Referencial
+                widget: list
+                summary: '{{title}}'
+                fields:
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descrição, widget: text }
+                  - name: icon
+                    label: Ícone
+                    widget: select
+                    required: false
+                    options: [network, leaf, sparkles, users, store, repeat, target, clipboard, lightbulb, trendingUp, mappin]
+          - name: platform
+            label: Bloco "Plataforma"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+              - name: items
+                label: Recursos listados
+                label_singular: Recurso
+                widget: list
+                field: { name: texto, label: Recurso, widget: string }
+          - name: steps
+            label: Bloco "Etapas"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: items
+                label: Etapas
+                label_singular: Etapa
+                widget: list
+                summary: '{{title}}'
+                fields:
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descrição, widget: text }
+          - name: encounters
+            label: Bloco "Encontros"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: gallery
+                label: Galeria
+                label_singular: Foto
+                widget: list
+                summary: '{{caption}}'
+                thumbnail: src
+                fields:
+                  - { name: src, label: Foto, widget: image }
+                  - { name: caption, label: Legenda, widget: string, required: false }
+          - name: cta
+            label: Chamada final
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+
+      # -------------------------------------------------------------- Impacto
+      - name: impacto
+        label: Impacto
+        file: web/src/content/data/impacto.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - { name: statsTitle, label: Título da seção de números, widget: string }
+          - name: stats
+            label: Números
+            label_singular: Número
+            widget: list
+            summary: '{{value}} — {{label}}'
+            fields:
+              - { name: value, label: Número, widget: string }
+              - { name: label, label: Rótulo, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: icon
+                label: Ícone
+                widget: select
+                required: false
+                options: [users, store, repeat, leaf, sparkles, network, trendingUp, mappin]
+          - name: dimensions
+            label: Bloco "Dimensões"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: items
+                label: Dimensões
+                label_singular: Dimensão
+                widget: list
+                summary: '{{title}}'
+                fields:
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descrição, widget: text }
+                  - name: icon
+                    label: Ícone
+                    widget: select
+                    required: false
+                    options: [leaf, sparkles, network, users, store, repeat, target, clipboard, lightbulb, trendingUp, mappin]
+          - name: measure
+            label: Bloco "Como medimos"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+              - { name: image, label: Imagem, widget: image }
+          - name: cta
+            label: Chamada final
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+
+      # ----------------------------------------------------- Instituto Camélia
+      - name: instituto-camelia
+        label: Instituto Camélia
+        file: web/src/content/data/instituto-camelia.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - name: about
+            label: Bloco "Quem somos"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+              - { name: image, label: Imagem, widget: image }
+          - name: objectives
+            label: Bloco "Objetivos"
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - name: items
+                label: Objetivos
+                label_singular: Objetivo
+                widget: list
+                field: { name: texto, label: Objetivo, widget: text }
+              - { name: conclusion, label: Fechamento, widget: text }
+          - name: initiatives
+            label: Iniciativas
+            label_singular: Iniciativa
+            widget: list
+            summary: '{{name}}'
+            fields:
+              - { name: name, label: Nome, widget: string }
+              - { name: description, label: Descrição, widget: text }
+              - name: gallery
+                label: Galeria
+                label_singular: Foto
+                widget: list
+                field: { name: foto, label: Foto, widget: image }
+          - name: actions
+            label: Bloco "Ações"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: gallery
+                label: Galeria
+                label_singular: Foto
+                widget: list
+                summary: '{{caption}}'
+                thumbnail: src
+                fields:
+                  - { name: src, label: Foto, widget: image }
+                  - { name: caption, label: Legenda, widget: string, required: false }
+          - name: cta
+            label: Chamada final
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+
+      # ------------------------------------------- Experiências (listagem)
+      - name: experiencias-listagem
+        label: Experiências (página de listagem)
+        file: web/src/content/data/experiencias.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - name: cta
+            label: Chamada final
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+
+      # ------------------------------------------------------------ Apoiadores
+      - name: apoiadores
+        label: Apoiadores
+        file: web/src/content/data/apoiadores.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - name: groups
+            label: Grupos de apoiadores
+            label_singular: Grupo
+            widget: list
+            summary: '{{title}}'
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: items
+                label: Apoiadores do grupo
+                label_singular: Apoiador
+                widget: list
+                summary: '{{name}}'
+                thumbnail: logo
+                fields:
+                  - name: id
+                    label: Identificador
+                    widget: string
+                    hint: >-
+                      Sem espaços nem acentos (ex.: "brde"). Usado internamente;
+                      não aparece no site.
+                  - { name: name, label: Nome, widget: string }
+                  - { name: logo, label: Logo, widget: image }
+                  - name: description
+                    label: Descrição
+                    widget: text
+                    hint: Texto exibido ao clicar no logo.
+                  - name: url
+                    label: Site oficial
+                    widget: string
+                    required: false
+                    hint: 'Endereço completo, começando por https://'
+          - name: cta
+            label: Chamada final
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+
+      # ----------------------------------------------------------- Como apoiar
+      - name: como-apoiar
+        label: Como apoiar
+        file: web/src/content/data/como-apoiar.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - name: paths
+            label: Bloco "Formas de apoiar"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: items
+                label: Formas de apoiar
+                label_singular: Forma
+                widget: list
+                summary: '{{title}}'
+                fields:
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descrição, widget: text }
+                  - name: icon
+                    label: Ícone
+                    widget: select
+                    required: false
+                    options: [leaf, sparkles, network, users, store, repeat, target, clipboard, lightbulb, trendingUp, mappin]
+                  - name: items
+                    label: Itens da lista
+                    label_singular: Item
+                    widget: list
+                    field: { name: texto, label: Item, widget: string }
+          - name: highlight
+            label: Frase de destaque
+            widget: object
+            fields:
+              - { name: statement, label: Frase, widget: text }
+              - { name: image, label: Imagem, widget: image }
+          - name: enables
+            label: Bloco "O que o apoio viabiliza"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: items
+                label: Itens
+                label_singular: Item
+                widget: list
+                summary: '{{title}}'
+                fields:
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descrição, widget: text }
+                  - name: icon
+                    label: Ícone
+                    widget: select
+                    required: false
+                    options: [leaf, sparkles, network, users, store, repeat, target, clipboard, lightbulb, trendingUp, mappin]
+          - name: steps
+            label: Bloco "Como começar"
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+              - name: items
+                label: Etapas
+                label_singular: Etapa
+                widget: list
+                summary: '{{title}}'
+                fields:
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descrição, widget: text }
+          - name: cta
+            label: Chamada final
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: primary
+                label: Botão principal
+                widget: object
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+              - name: secondary
+                label: Botão secundário
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+
+      # --------------------------------------------------------------- Contato
+      - name: contato
+        label: Contato
+        file: web/src/content/data/contato.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - name: panel
+            label: Painel lateral
+            hint: E-mail, telefone e redes sociais ficam em "Configurações → Dados do site".
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: text, label: Texto, widget: text }
+          - { name: formTitle, label: Título do formulário, widget: string }
+          - { name: formNote, label: Aviso abaixo do formulário, widget: text }
+
+      # ------------------------------------------------- Política de Privacidade
+      - name: privacidade
+        label: Política de Privacidade
+        file: web/src/content/data/privacidade.json
+        fields:
+          - name: seo
+            label: SEO — como a página aparece no Google
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Título na busca, widget: string }
+              - { name: description, label: Descrição na busca, widget: text }
+          - name: hero
+            label: Topo da página
+            widget: object
+            fields:
+              - { name: eyebrow, label: Rótulo, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: intro, label: Introdução, widget: text }
+          - name: updatedAt
+            label: Última atualização
+            widget: string
+            hint: >-
+              Texto livre, ex.: "Junho de 2026". ⚠ Esta política é uma minuta sujeita
+              a revisão jurídica (LGPD); alterações aqui mudam o texto público.
+          - name: sections
+            label: Seções
+            label_singular: Seção
+            widget: list
+            summary: '{{title}}'
+            collapsed: true
+            fields:
+              - name: id
+                label: Identificador
+                widget: string
+                hint: >-
+                  Sem espaços nem acentos (ex.: "cookies"). Usado no índice
+                  lateral e no link direto para a seção.
+              - { name: title, label: Título, widget: string }
+              - name: paragraphs
+                label: Parágrafos
+                label_singular: Parágrafo
+                widget: list
+                field: { name: texto, label: Parágrafo, widget: text }
+              - name: items
+                label: Lista de itens
+                label_singular: Item
+                widget: list
+                required: false
+                field: { name: texto, label: Item, widget: text }
+
+  # ============================================================================
+  # EXPERIÊNCIAS — um arquivo por estudo de caso; o nome do arquivo vira a URL.
+  # ============================================================================
+  - name: experiencias
+    label: Experiências
+    label_singular: Experiência
+    folder: web/src/content/data/experiencias
+    extension: json
+    format: json
+    create: true
+    identifier_field: name
+    slug: '{{slug}}'
+    summary: '{{name}} — {{location}}'
+    thumbnail: image
+    sortable_fields: [order, name]
+    editor:
+      preview: false
+    description: >-
+      Cada experiência vira uma página em /experiencias/<endereço>/. O endereço é
+      gerado a partir do nome ao criar a experiência e não muda depois.
+    fields:
+      - name: order
+        label: Ordem
+        widget: number
+        value_type: int
+        default: 99
+        hint: Menor número aparece primeiro nas listagens.
+      - { name: name, label: Nome, widget: string }
+      - { name: kind, label: Tipo, widget: string, hint: 'Ex.: "Território urbano".' }
+      - { name: location, label: Localização, widget: string, hint: 'Ex.: "Porto Alegre · RS".' }
+      - { name: subtitle, label: Subtítulo, widget: string }
+      - name: summary
+        label: Resumo
+        widget: text
+        hint: Uma frase — aparece nos cartões de listagem.
+      - name: seo
+        label: SEO — como a página aparece no Google
+        widget: object
+        collapsed: true
+        fields:
+          - { name: title, label: Título na busca, widget: string }
+          - { name: description, label: Descrição na busca, widget: text }
+      - { name: image, label: Imagem principal, widget: image }
+      - name: gallery
+        label: Galeria
+        label_singular: Foto
+        widget: list
+        field: { name: foto, label: Foto, widget: image }
+      - name: context
+        label: Contexto do território
+        label_singular: Parágrafo
+        widget: list
+        field: { name: texto, label: Parágrafo, widget: text }
+      - name: actions
+        label: Ações realizadas
+        label_singular: Ação
+        widget: list
+        field: { name: texto, label: Ação, widget: text }
+      - { name: objective, label: Objetivo, widget: text }
+      - name: results
+        label: Resultados
+        label_singular: Resultado
+        widget: list
+        summary: '{{value}} — {{label}}'
+        fields:
+          - { name: value, label: Número, widget: string }
+          - { name: label, label: Rótulo, widget: string }
+          - { name: description, label: Descrição, widget: text, required: false }
+          - name: icon
+            label: Ícone
+            widget: select
+            required: false
+            options: [users, store, repeat, leaf, sparkles, network, trendingUp, mappin]
+
+  # ============================================================================
+  # CONFIGURAÇÕES — dados que aparecem em todas as páginas.
+  # ============================================================================
+  - name: configuracoes
+    label: Configurações
+    editor:
+      preview: false
+    files:
+      - name: site
+        label: Dados do site
+        file: web/src/content/data/site.json
+        fields:
+          - name: name
+            label: Nome do projeto
+            widget: string
+            hint: Usado no rodapé, no SEO e nos dados estruturados de todas as páginas.
+          - { name: shortName, label: Nome curto, widget: string }
+          - { name: tagline, label: Frase de apresentação, widget: string }
+          - name: description
+            label: Descrição padrão (SEO)
+            widget: text
+            hint: Usada quando a página não tem descrição própria.
+          - name: url
+            label: Endereço do site
+            widget: string
+            hint: Sem barra no final. Alterar só em caso de troca de domínio.
+          - name: locale
+            label: Idioma
+            widget: string
+            hint: 'Formato BCP-47, ex.: "pt-BR".'
+          - name: contact
+            label: Contato
+            widget: object
+            fields:
+              - { name: email, label: E-mail, widget: string }
+              - { name: phone, label: Telefone (exibido), widget: string, required: false }
+              - name: phoneHref
+                label: Telefone (link)
+                widget: string
+                required: false
+                hint: 'Só números com país, ex.: "+555199999999".'
+              - { name: whatsapp, label: WhatsApp, widget: string, required: false }
+              - name: addresses
+                label: Endereços
+                label_singular: Endereço
+                widget: list
+                required: false
+                summary: '{{label}}'
+                fields:
+                  - { name: label, label: Rótulo, widget: string, required: false }
+                  - name: lines
+                    label: Linhas do endereço
+                    label_singular: Linha
+                    widget: list
+                    field: { name: texto, label: Linha, widget: string }
+          - name: social
+            label: Redes sociais
+            widget: object
+            fields:
+              - { name: instagram, label: Instagram, widget: string, required: false }
+
+      - name: navegacao
+        label: Menus
+        file: web/src/content/data/navegacao.json
+        fields:
+          - name: mainNav
+            label: Menu principal
+            label_singular: Item
+            hint: Itens exibidos no topo do site, na ordem em que aparecem aqui.
+            widget: list
+            summary: '{{label}}'
+            fields:
+              - { name: label, label: Texto, widget: string }
+              - { name: href, label: Link, widget: string }
+              - { name: description, label: Descrição, widget: string, required: false }
+          - name: primaryCta
+            label: Botão de destaque do topo
+            widget: object
+            fields:
+              - { name: label, label: Texto, widget: string }
+              - { name: href, label: Link, widget: string }
+              - { name: description, label: Descrição, widget: string, required: false }
+          - name: footerNav
+            label: Menus do rodapé
+            label_singular: Coluna
+            widget: list
+            summary: '{{title}}'
+            fields:
+              - { name: title, label: Título da coluna, widget: string }
+              - name: items
+                label: Itens
+                label_singular: Item
+                widget: list
+                summary: '{{label}}'
+                fields:
+                  - { name: label, label: Texto, widget: string }
+                  - { name: href, label: Link, widget: string }
+                  - { name: description, label: Descrição, widget: string, required: false }
+
+      - name: depoimentos
+        label: Depoimentos
+        file: web/src/content/data/depoimentos.json
+        fields:
+          - name: items
+            label: Depoimentos
+            label_singular: Depoimento
+            hint: >-
+              ⚠ Textos provisórios — substituir por depoimentos reais, com
+              autorização de uso de nome e imagem. Aparecem no carrossel da
+              página inicial.
+            widget: list
+            summary: '{{name}}'
+            fields:
+              - { name: quote, label: Depoimento, widget: text }
+              - { name: name, label: Nome, widget: string }
+              - { name: role, label: Função / local, widget: string }

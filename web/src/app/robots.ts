@@ -8,6 +8,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      // Painel de edição de conteúdo: não faz parte do site público.
+      disallow: "/admin/",
     },
     sitemap: absoluteUrl("/sitemap.xml"),
     host: absoluteUrl("/"),

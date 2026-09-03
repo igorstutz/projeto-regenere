@@ -8,7 +8,8 @@ de um WordPress simples para um site moderno, performático e com SEO forte.
 ```
 .
 ├── docs/        # Diagnóstico, escopo e documentação do projeto
-│   └── 01-diagnostico-e-escopo.md
+│   ├── 01-diagnostico-e-escopo.md
+│   └── 02-painel-de-conteudo.md
 └── web/         # Aplicação do site (Next.js 16 + TypeScript + Tailwind v4)
 ```
 
@@ -27,10 +28,12 @@ Veja [`web/README.md`](./web/README.md) para a arquitetura detalhada e o passo a
 ## Documentação
 
 - [Diagnóstico do site atual e escopo do novo site](./docs/01-diagnostico-e-escopo.md)
+- [Painel de conteúdo — configuração e uso](./docs/02-painel-de-conteudo.md)
 
 ## Decisões de escopo (v1)
 
 - Sem blog na v1 (estrutura prevista para fase futura).
 - Redação produzida internamente.
-- Site estático (sem CMS); edições futuras via desenvolvimento.
+- Site estático, com edição de conteúdo pelo painel em `/admin/` (Sveltia CMS,
+  baseado em Git) — sem servidor nem banco de dados.
 - Identidade visual: marca atual mantida e modernizada.
