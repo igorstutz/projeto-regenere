@@ -1,13 +1,8 @@
 {
   "public/images/brand/logo.webp": {
-    "width": 520,
-    "height": 529,
-    "kb": 52
-  },
-  "public/images/brand/logo-inverted.webp": {
-    "width": 87,
-    "height": 87,
-    "kb": 1
+    "width": 399,
+    "height": 374,
+    "kb": 50
   },
   "public/images/sponsors/brde.webp": {
     "width": 360,
@@ -214,11 +209,6 @@
     "height": 788,
     "kb": 118
   },
-  "public/images/partners/1.webp": {
-    "width": 320,
-    "height": 120,
-    "kb": 7
-  },
   "public/images/partners/2.webp": {
     "width": 320,
     "height": 120,
@@ -228,16 +218,6 @@
     "width": 320,
     "height": 120,
     "kb": 2
-  },
-  "public/images/partners/4.webp": {
-    "width": 320,
-    "height": 120,
-    "kb": 6
-  },
-  "public/images/partners/5.webp": {
-    "width": 320,
-    "height": 120,
-    "kb": 7
   },
   "public/images/partners/6.webp": {
     "width": 320,

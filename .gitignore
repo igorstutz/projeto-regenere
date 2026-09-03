@@ -24,3 +24,6 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+
+# Pacote de publicacao gerado localmente (nao versionar)
+publicar-hostgator.zip

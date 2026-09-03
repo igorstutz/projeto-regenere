@@ -83,8 +83,14 @@ const ASSETS = [
   // Google Meet (com barra do navegador) — impróprias para o site.
 ];
 
-// Logos dos 13 parceiros (1.png … 13.png)
+// Logos dos parceiros (1.png … 13.png).
+// 1, 4 e 5 ficam de fora: são as marcas institucionais do Governo do Estado do
+// RS, da Prefeitura de Porto Alegre e do Governo Federal, retiradas do site em
+// 28/07/2026 por causa do período pré-eleitoral. Não reimportar sem decisão.
+const LOGOS_RETIRADOS = new Set([1, 4, 5]);
+
 for (let i = 1; i <= 13; i++) {
+  if (LOGOS_RETIRADOS.has(i)) continue;
   ASSETS.push({
     src: `${BASE}/2026/05/${i}.png`,
     out: `public/images/partners/${i}.webp`,

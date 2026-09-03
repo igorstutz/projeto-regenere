@@ -1,11 +1,24 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
+/**
+ * Normaliza um caminho para o formato realmente servido pela hospedagem.
+ * Como o build usa `trailingSlash: true` (gera `/sobre/index.html`), páginas
+ * levam barra final — assim canonical e sitemap apontam para a URL final, sem
+ * depender do redirecionamento do Apache. Arquivos (ex.: `/sitemap.xml`) ficam
+ * intactos.
+ */
+export function pagePath(path = "/"): string {
+  const withLeading = path.startsWith("/") ? path : `/${path}`;
+  const isFile = /\.[a-z0-9]+$/i.test(withLeading);
+  if (isFile || withLeading.endsWith("/")) return withLeading;
+  return `${withLeading}/`;
+}
+
 /** Monta uma URL absoluta a partir de um caminho relativo. */
 export function absoluteUrl(path = "/"): string {
   const base = siteConfig.url.replace(/\/$/, "");
-  const suffix = path.startsWith("/") ? path : `/${path}`;
-  return `${base}${suffix === "/" ? "" : suffix}`;
+  return `${base}${pagePath(path)}`;
 }
 
 export interface BuildMetadataParams {
@@ -33,11 +46,11 @@ export function buildMetadata({
   return {
     title,
     description: resolvedDescription,
-    alternates: { canonical: path },
+    alternates: { canonical: pagePath(path) },
     openGraph: {
       title: title ?? siteConfig.name,
       description: resolvedDescription,
-      url: path,
+      url: pagePath(path),
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
