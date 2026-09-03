@@ -43,6 +43,23 @@ jobs:
           name: site
           path: web/out
 
+      - name: Verificar acesso ao servidor
+        # Diagnóstico barato: mostra de que IP este runner sai e se a porta 21
+        # aceita conexão, no mesmo ambiente em que o envio vai rodar.
+        continue-on-error: true
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+        run: |
+          set +e
+          echo "IP de saída: $(curl -s --max-time 10 https://api.ipify.org)"
+          echo "resolve para: $(getent ahostsv4 "$FTP_HOST" | head -1)"
+          timeout 10 bash -c "</dev/tcp/$FTP_HOST/21" \
+            && echo "TCP 21 pelo nome: conectou" \
+            || echo "TCP 21 pelo nome: recusado"
+          timeout 10 bash -c "</dev/tcp/69.6.249.103/21" \
+            && echo "TCP 21 pelo IP: conectou" \
+            || echo "TCP 21 pelo IP: recusado"
+
       - name: Enviar para a HostGator (tentativa ${{ inputs.tentativa }})
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
