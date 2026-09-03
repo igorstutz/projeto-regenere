@@ -7,9 +7,6 @@ name: Publicar site (HostGator)
 # Secrets necessários (Settings → Secrets and variables → Actions):
 #   FTP_HOST, FTP_USER, FTP_PASSWORD  — obrigatórios
 #   FTP_PORT, FTP_REMOTE_DIR          — opcionais (padrão: 21 e /public_html)
-#
-# O envio é tentado em até três runners porque o firewall da HostGator recusa a
-# conexão de parte dos IPs do GitHub Actions; cada job sai de um IP diferente.
 
 on:
   push:
@@ -17,7 +14,6 @@ on:
     paths:
       - "web/**"
       - ".github/workflows/publicar-hostgator.yml"
-      - ".github/workflows/enviar-ftp.yml"
   workflow_dispatch:
 
 permissions:
@@ -29,12 +25,13 @@ concurrency:
   group: hostgator
   cancel-in-progress: false
 
+defaults:
+  run:
+    working-directory: web
+
 jobs:
-  construir:
+  publicar:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: web
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,33 +54,11 @@ jobs:
       - name: Build (exportação estática)
         run: npm run build
 
-      - name: Guardar o site construído
-        uses: actions/upload-artifact@v4
-        with:
-          name: site
-          path: web/out
-          retention-days: 1
-          include-hidden-files: true
-
-  envio-1:
-    needs: construir
-    uses: ./.github/workflows/enviar-ftp.yml
-    secrets: inherit
-    with:
-      tentativa: 1
-
-  envio-2:
-    needs: [construir, envio-1]
-    if: ${{ always() && needs.envio-1.result == 'failure' }}
-    uses: ./.github/workflows/enviar-ftp.yml
-    secrets: inherit
-    with:
-      tentativa: 2
-
-  envio-3:
-    needs: [construir, envio-2]
-    if: ${{ always() && needs.envio-2.result == 'failure' }}
-    uses: ./.github/workflows/enviar-ftp.yml
-    secrets: inherit
-    with:
-      tentativa: 3
+      - name: Enviar para a HostGator
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+          FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
+        run: node scripts/deploy-ftp.mjs

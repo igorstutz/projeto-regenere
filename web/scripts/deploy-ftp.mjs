@@ -51,13 +51,13 @@ async function carregarEnv() {
     bruto = await readFile(caminho, "utf8");
   } catch {
     if (process.env.FTP_HOST) {
-      const doAmbiente = {
-        FTP_HOST: process.env.FTP_HOST,
-        FTP_USER: process.env.FTP_USER,
-        FTP_PASSWORD: process.env.FTP_PASSWORD,
-        FTP_PORT: process.env.FTP_PORT,
-        FTP_REMOTE_DIR: process.env.FTP_REMOTE_DIR,
-      };
+      // Um secret opcional não cadastrado chega como string vazia, não como
+      // ausente — descartá-las é o que faz os padrões abaixo valerem.
+      const doAmbiente = Object.fromEntries(
+        ["FTP_HOST", "FTP_USER", "FTP_PASSWORD", "FTP_PORT", "FTP_REMOTE_DIR"]
+          .map((chave) => [chave, process.env[chave]?.trim()])
+          .filter(([, valor]) => valor),
+      );
       for (const obrigatoria of ["FTP_USER", "FTP_PASSWORD"]) {
         if (!doAmbiente[obrigatoria]) {
           throw new Error(`Defina a variável de ambiente ${obrigatoria}`);
@@ -82,10 +82,12 @@ async function carregarEnv() {
     if (idx === -1) continue;
     const chave = limpa.slice(0, idx).trim();
     // Remove aspas ao redor do valor, se houver.
-    env[chave] = limpa
+    const valor = limpa
       .slice(idx + 1)
       .trim()
       .replace(/^["']|["']$/g, "");
+    // Linha sem valor equivale a chave ausente, para os padrões valerem.
+    if (valor) env[chave] = valor;
   }
 
   for (const obrigatoria of ["FTP_HOST", "FTP_USER", "FTP_PASSWORD"]) {
@@ -103,8 +105,11 @@ async function conectar(client, env) {
     host: env.FTP_HOST,
     user: env.FTP_USER,
     password: env.FTP_PASSWORD,
-    port: Number(env.FTP_PORT ?? 21),
+    // `|| 21` e não `?? 21`: um valor invalido ou vazio vira 0 em Number(),
+    // e conectar na porta 0 falha com um ECONNREFUSED enganoso.
+    port: Number(env.FTP_PORT) || 21,
   };
+  log(`Conectando em ${base.host}:${base.port} como ${base.user}…`);
 
   try {
     await client.access({
