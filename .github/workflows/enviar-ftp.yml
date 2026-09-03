@@ -1,0 +1,53 @@
+name: Enviar por FTP
+
+# Workflow reutilizável: baixa o site já construído e o envia para a HostGator.
+#
+# Existe separado porque o firewall da HostGator recusa a conexão de parte dos
+# IPs dos runners do GitHub (bloqueio de faixas de datacenter). Como cada job
+# roda em um runner novo, com IP novo, quem chama este workflow o aciona mais de
+# uma vez até um dos endereços ser aceito.
+
+on:
+  workflow_call:
+    inputs:
+      tentativa:
+        description: Número da tentativa, só para aparecer no log.
+        required: false
+        type: number
+        default: 1
+
+defaults:
+  run:
+    working-directory: web
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Baixar o site construído
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: web/out
+
+      - name: Enviar para a HostGator (tentativa ${{ inputs.tentativa }})
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+          FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
+        run: node scripts/deploy-ftp.mjs
