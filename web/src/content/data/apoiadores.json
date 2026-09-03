@@ -1,0 +1,103 @@
+{
+  "seo": {
+    "title": "Apoiadores",
+    "description": "Patrocinadores, financiadores e parceiros técnicos que tornam o Projeto Regenere possível — clique em cada logo para conhecer a instituição."
+  },
+  "hero": {
+    "eyebrow": "Apoiadores",
+    "title": "Construído de forma colaborativa.",
+    "intro": "O Regenere é realizado pelo Instituto Camélia e só é possível graças a instituições comprometidas com o desenvolvimento sustentável, a inclusão produtiva e a inovação social. Clique em um logo para saber mais."
+  },
+  "groups": [
+    {
+      "eyebrow": "Patrocínio e fomento",
+      "title": "Quem viabiliza o programa",
+      "intro": "Instituições públicas e de fomento que financiam e dão sustentação ao Regenere.",
+      "items": [
+        {
+          "id": "regenera-rs",
+          "name": "Regenera RS",
+          "logo": "/images/partners/3.webp",
+          "description": "Iniciativa de reconstrução e desenvolvimento socioeconômico do Rio Grande do Sul, que apoia projetos de impacto nos territórios."
+        },
+        {
+          "id": "brde",
+          "name": "BRDE",
+          "logo": "/images/partners/2.webp",
+          "description": "Banco Regional de Desenvolvimento do Extremo Sul — instituição financeira pública de fomento ao desenvolvimento econômico da região.",
+          "url": "https://www.brde.com.br"
+        }
+      ]
+    },
+    {
+      "eyebrow": "Parceiros técnicos e institucionais",
+      "title": "Quem soma conhecimento e alcance",
+      "intro": "Universidades, cooperativas e organizações que somam pesquisa, assistência técnica, crédito e acesso a mercado.",
+      "items": [
+        {
+          "id": "ifrs",
+          "name": "IFRS",
+          "logo": "/images/partners/6.webp",
+          "description": "Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul — parceiro em ensino, pesquisa e extensão nos territórios.",
+          "url": "https://ifrs.edu.br"
+        },
+        {
+          "id": "ufrgs",
+          "name": "UFRGS",
+          "logo": "/images/partners/7.webp",
+          "description": "Universidade Federal do Rio Grande do Sul — parceira em pesquisa e extensão, conectando conhecimento acadêmico e prática territorial.",
+          "url": "https://www.ufrgs.br"
+        },
+        {
+          "id": "emater",
+          "name": "EMATER/RS",
+          "logo": "/images/partners/9.webp",
+          "description": "Empresa de Assistência Técnica e Extensão Rural do RS — apoio técnico à produção e à organização rural.",
+          "url": "https://www.emater.tche.br"
+        },
+        {
+          "id": "credisis",
+          "name": "CrediSIS Coopesa",
+          "logo": "/images/partners/8.webp",
+          "description": "Cooperativa de crédito que amplia o acesso a serviços financeiros e microcrédito nos territórios."
+        },
+        {
+          "id": "rs-garanti",
+          "name": "RS Garanti",
+          "logo": "/images/partners/10.webp",
+          "description": "Fundo garantidor que facilita o acesso a crédito por micro e pequenos empreendedores."
+        },
+        {
+          "id": "cooptma",
+          "name": "COOPTMA",
+          "logo": "/images/partners/12.webp",
+          "description": "Cooperativa parceira na organização produtiva e na comercialização da produção local."
+        },
+        {
+          "id": "cooperativa-rural",
+          "name": "Ajeumbó — Cooperativa do Povo",
+          "logo": "/images/partners/11.webp",
+          "description": "Cooperativa de integração de trabalho, produção e consumo comunitário rural, parceira na estruturação produtiva."
+        },
+        {
+          "id": "umpe",
+          "name": "UMPE",
+          "logo": "/images/sponsors/umpe.webp",
+          "description": "Universo do Micro e Pequeno Empreendedor — plataforma digital que integra gestão, capacitação e acesso a mercado, potencializando a metodologia."
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Quer apoiar o Projeto Regenere?",
+    "description": "Empresas e instituições podem se tornar parceiras e ampliar o impacto nos territórios.",
+    "primary": {
+      "label": "Como apoiar",
+      "href": "/como-apoiar"
+    },
+    "secondary": {
+      "label": "Falar com a equipe",
+      "href": "/contato"
+    }
+  }
+}

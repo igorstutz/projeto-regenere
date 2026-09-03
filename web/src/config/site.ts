@@ -2,9 +2,11 @@
  * Configuração global do site — fonte única de verdade para metadados,
  * informações de contato e redes sociais.
  *
- * ⚠️ DADOS A CONFIRMAR COM O CLIENTE (parecem dados de template/demo no site
- * atual): telefone e endereços. Estão marcados com `// TODO: confirmar`.
+ * ⚠️ Endereços ainda não confirmados — por isso não são exibidos em nenhuma
+ * página. Estão marcados com `// TODO: confirmar`.
  */
+
+import dados from "../content/data/site.json";
 
 export interface PostalAddress {
   /** Rótulo curto, ex.: "Sede" ou "Atendimento". */
@@ -45,26 +47,4 @@ export interface SiteConfig {
   social: SocialLinks;
 }
 
-export const siteConfig: SiteConfig = {
-  name: "Projeto Regenere",
-  shortName: "Regenere",
-  tagline: "Desenvolvimento territorial com impacto real.",
-  description:
-    "O Projeto Regenere promove o desenvolvimento territorial em comunidades " +
-    "urbanas e rurais por meio da revitalização de territórios, do fortalecimento " +
-    "de empreendimentos locais e da construção de redes socioprodutivas.",
-  url: "https://projeto-regenere.com.br",
-  locale: "pt-BR",
-  contact: {
-    email: "contato@projeto-regenere.com.br",
-    phone: "+55 (11) 3099-8877", // TODO: confirmar — DDD 11 destoa da atuação no RS
-    phoneHref: "+551130998877", // TODO: confirmar
-    addresses: [
-      // TODO: confirmar — os endereços do site atual parecem dados de demonstração
-      { label: "Atendimento", lines: ["A confirmar com a equipe do projeto"] },
-    ],
-  },
-  social: {
-    instagram: "https://instagram.com/projetoregenere",
-  },
-};
+export const siteConfig: SiteConfig = dados;

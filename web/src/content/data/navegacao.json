@@ -1,0 +1,97 @@
+{
+  "mainNav": [
+    {
+      "label": "O Projeto",
+      "href": "/sobre",
+      "description": "Quem somos e o que fazemos"
+    },
+    {
+      "label": "Metodologia",
+      "href": "/metodologia",
+      "description": "Como atuamos nos territórios"
+    },
+    {
+      "label": "Instituto Camélia",
+      "href": "/instituto-camelia",
+      "description": "A organização mantenedora"
+    },
+    {
+      "label": "Experiências",
+      "href": "/experiencias",
+      "description": "Territórios onde atuamos"
+    },
+    {
+      "label": "Impacto",
+      "href": "/impacto",
+      "description": "Resultados e indicadores"
+    },
+    {
+      "label": "Apoiadores",
+      "href": "/apoiadores",
+      "description": "Patrocinadores e parceiros"
+    },
+    {
+      "label": "Contato",
+      "href": "/contato",
+      "description": "Fale com a gente"
+    }
+  ],
+  "primaryCta": {
+    "label": "Como apoiar",
+    "href": "/como-apoiar",
+    "description": "Leve o Regenere ao seu território"
+  },
+  "footerNav": [
+    {
+      "title": "O Projeto",
+      "items": [
+        {
+          "label": "Sobre",
+          "href": "/sobre"
+        },
+        {
+          "label": "Metodologia",
+          "href": "/metodologia"
+        },
+        {
+          "label": "Instituto Camélia",
+          "href": "/instituto-camelia"
+        },
+        {
+          "label": "Impacto",
+          "href": "/impacto"
+        }
+      ]
+    },
+    {
+      "title": "Atuação",
+      "items": [
+        {
+          "label": "Experiências",
+          "href": "/experiencias"
+        },
+        {
+          "label": "Apoiadores",
+          "href": "/apoiadores"
+        },
+        {
+          "label": "Como apoiar",
+          "href": "/como-apoiar"
+        }
+      ]
+    },
+    {
+      "title": "Institucional",
+      "items": [
+        {
+          "label": "Contato",
+          "href": "/contato"
+        },
+        {
+          "label": "Política de Privacidade",
+          "href": "/politica-de-privacidade"
+        }
+      ]
+    }
+  ]
+}

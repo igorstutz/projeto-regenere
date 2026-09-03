@@ -1,0 +1,79 @@
+{
+  "seo": {
+    "title": "Impacto",
+    "description": "Os resultados do Projeto Regenere nos territórios: famílias atendidas, negócios fortalecidos e redes socioprodutivas construídas."
+  },
+  "hero": {
+    "eyebrow": "Impacto",
+    "title": "Resultados que se medem em vidas transformadas.",
+    "intro": "Acompanhamos de perto o efeito da nossa atuação. Os números abaixo resumem parte do que já foi construído junto às comunidades."
+  },
+  "statsTitle": "O que já construímos",
+  "stats": [
+    {
+      "value": "100+",
+      "label": "famílias quilombolas atendidas",
+      "description": "no território rural de Tavares (RS).",
+      "icon": "users"
+    },
+    {
+      "value": "20+",
+      "label": "negócios locais impulsionados",
+      "description": "no bairro Bom Jesus, em Porto Alegre.",
+      "icon": "store"
+    },
+    {
+      "value": "2",
+      "label": "territórios ativos",
+      "description": "um urbano e um rural, com modelo replicável.",
+      "icon": "mappin"
+    }
+  ],
+  "dimensions": {
+    "eyebrow": "Dimensões",
+    "title": "Um impacto que integra quatro dimensões",
+    "intro": "Mais do que números, buscamos transformação em todas as dimensões da vida no território.",
+    "items": [
+      {
+        "title": "Econômica",
+        "description": "Geração de renda, acesso a crédito e fortalecimento de empreendimentos locais.",
+        "icon": "store"
+      },
+      {
+        "title": "Social",
+        "description": "Inclusão produtiva, autonomia das famílias e redução de desigualdades.",
+        "icon": "users"
+      },
+      {
+        "title": "Cultural",
+        "description": "Valorização de saberes tradicionais e das identidades de cada território.",
+        "icon": "sparkles"
+      },
+      {
+        "title": "Ambiental",
+        "description": "Práticas sustentáveis e regeneração na relação entre comunidade e território.",
+        "icon": "leaf"
+      }
+    ]
+  },
+  "measure": {
+    "eyebrow": "Transparência",
+    "title": "Como acompanhamos o impacto",
+    "paragraphs": [
+      "Mais do que contabilizar atividades, o Regenere acompanha indicadores de geração de renda, autonomia dos empreendimentos e fortalecimento das redes locais ao longo do tempo.",
+      "Esta página será atualizada periodicamente com novos indicadores, relatórios e histórias de transformação dos territórios."
+    ],
+    "image": "/images/photos/metodologia-resultados.webp"
+  },
+  "cta": {
+    "title": "Ajude a ampliar esse impacto.",
+    "primary": {
+      "label": "Como apoiar",
+      "href": "/como-apoiar"
+    },
+    "secondary": {
+      "label": "Conhecer as experiências",
+      "href": "/experiencias"
+    }
+  }
+}

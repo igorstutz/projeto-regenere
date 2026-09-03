@@ -1,0 +1,24 @@
+{
+  "name": "Projeto Regenere",
+  "shortName": "Regenere",
+  "tagline": "Desenvolvimento territorial com impacto real.",
+  "description": "O Projeto Regenere promove o desenvolvimento territorial em comunidades urbanas e rurais por meio da revitalização de territórios, do fortalecimento de empreendimentos locais e da construção de redes socioprodutivas.",
+  "url": "https://projeto-regenere.com.br",
+  "locale": "pt-BR",
+  "contact": {
+    "email": "contato@projeto-regenere.com.br",
+    "phone": "+55 (11) 3099-8877",
+    "phoneHref": "+551130998877",
+    "addresses": [
+      {
+        "label": "Atendimento",
+        "lines": [
+          "A confirmar com a equipe do projeto"
+        ]
+      }
+    ]
+  },
+  "social": {
+    "instagram": "https://instagram.com/projetoregenere"
+  }
+}

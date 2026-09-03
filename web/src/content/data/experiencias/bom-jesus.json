@@ -1,0 +1,37 @@
+{
+  "order": 1,
+  "name": "Bom Jesus",
+  "kind": "Território urbano",
+  "location": "Porto Alegre · RS",
+  "subtitle": "Fortalecimento do empreendedorismo local",
+  "summary": "Capacitação e mentoria para empreendedores locais, fortalecendo a economia do bairro.",
+  "seo": {
+    "title": "Experiência Bom Jesus",
+    "description": "No bairro Bom Jesus, em Porto Alegre, o Regenere fortalece o empreendedorismo local com capacitação, mentoria, acesso a crédito e redes produtivas."
+  },
+  "image": "/images/photos/experiencia-2.webp",
+  "gallery": [
+    "/images/photos/experiencia-1.webp",
+    "/images/photos/experiencia-7.webp",
+    "/images/photos/experiencia-8.webp"
+  ],
+  "context": [
+    "O piloto urbano do Programa Regenere atua no bairro Bom Jesus, em Porto Alegre, com foco na inclusão socioeconômica e no fortalecimento do empreendedorismo local.",
+    "A diversidade de negócios e iniciativas comunitárias do bairro é o ponto de partida: o programa amplia capacidade de gestão, acesso a mercado e geração de renda junto a quem já empreende ali."
+  ],
+  "actions": [
+    "Capacitação e mentoria para empreendedores",
+    "Acesso a crédito e microcrédito",
+    "Plataforma digital de gestão e comercialização",
+    "Fortalecimento de redes produtivas locais",
+    "Eventos culturais e comunitários"
+  ],
+  "objective": "Criar um ecossistema sustentável capaz de gerar renda, reduzir desigualdades e servir como modelo replicável.",
+  "results": [
+    {
+      "value": "20+",
+      "label": "negócios locais impulsionados",
+      "icon": "store"
+    }
+  ]
+}

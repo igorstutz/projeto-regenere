@@ -1,0 +1,22 @@
+{
+  "seo": {
+    "title": "Experiências",
+    "description": "Territórios onde o Projeto Regenere atua: do bairro Bom Jesus, em Porto Alegre, à comunidade quilombola de Tavares."
+  },
+  "hero": {
+    "eyebrow": "Experiências",
+    "title": "Iniciativas que inspiram, em contextos urbanos e rurais.",
+    "intro": "Iniciativas já implementadas com foco na geração de renda, no fortalecimento produtivo e no desenvolvimento territorial — cada uma adaptada à realidade do seu território."
+  },
+  "cta": {
+    "title": "Quer levar uma experiência como essas ao seu território?",
+    "primary": {
+      "label": "Como apoiar",
+      "href": "/como-apoiar"
+    },
+    "secondary": {
+      "label": "Falar com a equipe",
+      "href": "/contato"
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import type { PageSeo } from "./_types";
+import dados from "./data/contato.json";
 
 export interface ContatoContent {
   seo: PageSeo;
@@ -8,28 +9,4 @@ export interface ContatoContent {
   formNote: string;
 }
 
-export const contatoContent: ContatoContent = {
-  seo: {
-    title: "Contato",
-    description:
-      "Fale com o Projeto Regenere. Envie uma mensagem para parcerias, " +
-      "patrocínio ou para levar o programa ao seu território.",
-  },
-  hero: {
-    eyebrow: "Contato",
-    title: "Conecte-se com a gente.",
-    intro:
-      "Quer apoiar, ser parceiro ou levar o Regenere ao seu território? Envie uma " +
-      "mensagem — teremos prazer em conversar.",
-  },
-  panel: {
-    title: "Vamos conversar",
-    text:
-      "Escolha o canal que preferir ou preencha o formulário ao lado. Respondemos o " +
-      "mais rápido possível.",
-  },
-  formTitle: "Envie uma mensagem",
-  formNote:
-    "Ao enviar, você concorda com o tratamento dos seus dados conforme a nossa " +
-    "Política de Privacidade.",
-};
+export const contatoContent: ContatoContent = dados;
