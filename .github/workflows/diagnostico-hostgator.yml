@@ -1,0 +1,32 @@
+name: Diagnostico de acesso a HostGator
+
+# Temporário: verifica, a partir de um runner do GitHub, quais portas do
+# servidor da HostGator aceitam conexão. Serve para decidir o caminho de
+# publicação automática. Pode ser removido depois.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Portas do servidor
+        run: |
+          set +e
+          IP=69.6.249.103
+          echo "IP de saída deste runner: $(curl -s https://api.ipify.org)"
+          for porta in 21 990 22 2222 80 443; do
+            timeout 8 bash -c "</dev/tcp/$IP/$porta" 2>/dev/null \
+              && echo "porta $porta: ABERTA" \
+              || echo "porta $porta: fechada/recusada"
+          done
+          echo "--- pelo nome ---"
+          for host in ftp.projeto-regenere.com.br projeto-regenere.com.br; do
+            timeout 8 bash -c "</dev/tcp/$host/21" 2>/dev/null \
+              && echo "$host:21 ABERTA" \
+              || echo "$host:21 fechada/recusada"
+          done
