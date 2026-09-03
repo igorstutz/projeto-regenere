@@ -15,9 +15,14 @@ backend:
   repo: igorstutz/projeto-regenere
   branch: main
   # Autenticação por OAuth ("Entrar com GitHub"): descomente e aponte para o
-  # Cloudflare Worker do sveltia-cms-auth. Enquanto estiver comentado, o login
-  # é feito pelo botão "Sign In with Token" (token pessoal do GitHub).
+  # Cloudflare Worker do sveltia-cms-auth. Sem `base_url`, o CMS tentaria o
+  # endpoint padrão (https://api.netlify.com), que não vale para este site.
   # base_url: https://sveltia-cms-auth.SEU-SUBDOMINIO.workers.dev
+  #
+  # Enquanto o Worker não existir, a tela de login oferece apenas o token
+  # pessoal — o botão de OAuth só apareceria para dar erro. Ao configurar o
+  # `base_url` acima, troque esta linha por `auth_methods: [oauth, token]`.
+  auth_methods: [token]
   commit_messages:
     create: 'conteúdo: cria {{collection}} "{{slug}}"'
     update: 'conteúdo: atualiza {{collection}} "{{slug}}"'
@@ -25,9 +30,15 @@ backend:
     uploadMedia: 'conteúdo: envia imagem {{path}}'
     deleteMedia: 'conteúdo: remove imagem {{path}}'
 
+# Nome exibido na tela de login e na aba do navegador (no lugar de "Sveltia CMS").
+app_title: Projeto Regenere
+
 site_url: https://projeto-regenere.com.br
 display_url: https://projeto-regenere.com.br
-logo_url: /images/brand/logo.webp
+
+logo:
+  src: /images/brand/logo.webp
+  show_in_header: true
 
 # Imagens enviadas pelo painel. As já existentes ficam acessíveis pelas coleções
 # de mídia abaixo (Fotos, Marca, Patrocinadores, Parceiros).

@@ -100,17 +100,33 @@ um Cloudflare Worker gratuito.
      repo: igorstutz/projeto-regenere
      branch: main
      base_url: https://sveltia-cms-auth.SEU-SUBDOMINIO.workers.dev
+     auth_methods: [oauth, token]
    ```
 
-Enquanto essa linha estiver comentada, o painel funciona pelo botão **"Sign In
-with Token"** (o editor gera um token pessoal no GitHub e cola). É útil para
-testar antes de montar o Worker.
+   Note o `auth_methods`: hoje ele está como `[token]`, porque sem o Worker o
+   botão "Entrar com GitHub" iria para o endpoint padrão do CMS
+   (`https://api.netlify.com`), que não atende este site — o botão só daria
+   erro. Ao configurar o Worker, libere `oauth` como acima.
+
+### Entrar com token pessoal (o método ativo hoje)
+
+Funciona sem nenhuma infraestrutura e serve tanto para testar quanto para uso
+permanente por poucas pessoas:
+
+1. Em https://projeto-regenere.com.br/admin/, clique em **Entrar usando token de
+   acesso**. O painel abre o GitHub já com o formulário certo.
+2. No GitHub, gere um **fine-grained personal access token** com:
+   - *Repository access*: apenas `igorstutz/projeto-regenere`
+   - *Permissions → Contents*: **Read and write**
+   - *Expiration*: o prazo que preferir (ao expirar, basta gerar outro)
+3. Copie o token e cole no painel. Ele fica guardado no navegador daquele
+   computador — quem usa outro computador gera o seu.
 
 ### 3. Dar acesso aos editores
 
 Quem edita precisa de conta no GitHub e de permissão **Write** no repositório
-(*Settings → Collaborators*). O painel respeita essa permissão: sem acesso de
-escrita, o login funciona mas o salvamento é recusado.
+(*Settings → Collaborators*). O painel verifica isso no login: quem não é
+colaborador recebe "Not a collaborator of the repository" e não entra.
 
 > **Sobre a segurança do endereço /admin/**: a página do painel é pública, como em
 > qualquer CMS baseado em Git — o que protege o conteúdo é o GitHub. Sem uma conta
@@ -122,7 +138,7 @@ escrita, o login funciona mas o salvamento é recusado.
 
 ## Uso diário
 
-1. Acesse **projeto-regenere.com.br/admin/** e entre com o GitHub.
+1. Acesse **projeto-regenere.com.br/admin/** e entre (hoje, com token pessoal).
 2. Escolha a página no menu lateral, edite e clique em **Save**.
 3. Em poucos minutos o site está no ar. O andamento aparece na aba **Actions** do
    repositório.
@@ -170,6 +186,10 @@ do JSON não estiver declarado. Isso importa porque **o CMS grava apenas o que e
 no config**: um campo esquecido é apagado silenciosamente na primeira vez que
 alguém salvar aquela página. A mesma verificação roda no GitHub Actions antes de
 cada publicação.
+
+**Marca do painel**: o nome na tela de login e na aba do navegador vem de
+`app_title`, e o logo de `logo.src` — ambos em `config.yml`. O rodapé da tela de
+login mantém um "Powered by Sveltia CMS", que o projeto não permite remover.
 
 **Versão do CMS**: `web/public/admin/index.html` fixa a versão do Sveltia
 (`@sveltia/cms@0.205.1`). Atualizar é trocar esse número — deliberadamente, e
