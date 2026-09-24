@@ -4,7 +4,7 @@
   "kind": "Território rural · comunidade quilombola",
   "location": "Tavares · RS",
   "subtitle": "Desenvolvimento produtivo em comunidades quilombolas",
-  "summary": "Estruturação de cadeias produtivas junto a mais de 100 famílias quilombolas.",
+  "summary": "Estruturação de cadeias produtivas junto a mais de 80 famílias quilombolas.",
   "seo": {
     "title": "Experiência Tavares",
     "description": "Em Tavares, o Regenere fortalece a produção agrícola e a autonomia de mais de 100 famílias quilombolas, com estruturação produtiva e acesso a mercados."
@@ -29,8 +29,9 @@
   "objective": "Reduzir perdas, aumentar a renda e valorizar modos de vida tradicionais, com base em práticas sustentáveis.",
   "results": [
     {
-      "value": "100+",
+      "value": "80+",
       "label": "famílias quilombolas atendidas",
+      "description": "",
       "icon": "users"
     }
   ]
