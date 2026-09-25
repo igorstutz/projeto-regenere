@@ -19,8 +19,8 @@
         "caption": "Instituto Camélia no território"
       },
       {
-        "src": "/images/photos/experiencia-6.webp",
-        "alt": "Encontro comunitário ao entardecer em Tavares",
+        "src": "/images/photos/tavares-1.webp",
+        "alt": "Encontro com as famílias quilombolas em Tavares",
         "caption": "Encontro comunitário · Tavares"
       },
       {
@@ -65,7 +65,7 @@
       "O Projeto Regenere promove o desenvolvimento de territórios urbanos e rurais a partir das pessoas que vivem neles. Em vez de soluções de prateleira, construímos caminhos junto com cada comunidade.",
       "Fortalecemos empreendimentos locais, articulamos redes socioprodutivas e conectamos saberes tradicionais a conhecimento técnico e acadêmico — sempre com foco em resultados concretos e duradouros."
     ],
-    "image": "/images/photos/experiencia-6.webp",
+    "image": "/images/photos/tavares-1.webp",
     "href": "/sobre"
   },
   "pillars": {
@@ -107,7 +107,7 @@
         "kind": "Território rural · Comunidade quilombola",
         "description": "Estruturação de cadeias produtivas e fortalecimento de redes com mais de 100 famílias quilombolas.",
         "href": "/experiencias/tavares",
-        "image": "/images/photos/experiencia-6.webp"
+        "image": "/images/photos/tavares-1.webp"
       }
     ]
   },

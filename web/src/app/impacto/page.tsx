@@ -97,14 +97,14 @@ export default function ImpactoPage() {
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <span className="absolute left-4 top-4 rounded-md bg-white/15 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-inset ring-white/20 backdrop-blur">
+                      <span className="absolute left-4 top-4 rounded-md bg-white/15 px-2.5 py-1 text-xs font-bold text-white ring-1 ring-inset ring-white/20 backdrop-blur">
                         {exp.kind}
                       </span>
                     </div>
                     <div className="flex flex-1 flex-col p-8">
                       {result ? (
                         <p className="flex items-baseline gap-2">
-                          <span className="font-display text-4xl font-semibold text-brand-700">
+                          <span className="font-display text-4xl font-bold text-brand-700">
                             {result.value}
                           </span>
                           <span className="text-sm font-medium text-sand-600">
@@ -114,7 +114,7 @@ export default function ImpactoPage() {
                       ) : null}
                       <h3 className="mt-3 text-2xl">{exp.name}</h3>
                       <p className="mt-2 leading-relaxed text-sand-700">{exp.summary}</p>
-                      <span className="mt-6 inline-flex items-center gap-1.5 font-semibold text-brand-700">
+                      <span className="mt-6 inline-flex items-center gap-1.5 font-bold text-brand-700">
                         Ver experiência
                         <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
                       </span>

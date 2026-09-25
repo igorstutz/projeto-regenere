@@ -99,7 +99,7 @@ export default function SobrePage() {
                     />
                   </Reveal>
                   <Reveal delay={120}>
-                    <span className="font-display text-5xl font-semibold text-brand-200">
+                    <span className="font-display text-5xl font-bold text-brand-200">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h2 className="mt-2 text-3xl sm:text-4xl">{block.title}</h2>

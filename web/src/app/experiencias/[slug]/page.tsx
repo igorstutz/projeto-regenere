@@ -92,7 +92,7 @@ export default async function ExperienciaCasePage({ params }: PageProps) {
               />
               <div className="mt-8 rounded-2xl border-l-4 border-brand-500 bg-background p-6 shadow-sm">
                 <p className="text-lg leading-relaxed text-sand-800">
-                  <span className="font-semibold text-brand-700">Objetivo: </span>
+                  <span className="font-bold text-brand-700">Objetivo: </span>
                   {item.objective}
                 </p>
               </div>
@@ -116,14 +116,25 @@ export default async function ExperienciaCasePage({ params }: PageProps) {
       <Section>
         <Container size="wide">
           <SectionHeader title="No território" />
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          {/* 4 colunas quando a galeria fecha em linhas de 4; senão, 3 */}
+          <div
+            className={`mt-10 grid gap-4 ${
+              item.gallery.length % 4 === 0
+                ? "sm:grid-cols-2 lg:grid-cols-4"
+                : "sm:grid-cols-3"
+            }`}
+          >
             {item.gallery.map((src, i) => (
               <MediaPlaceholder
                 key={src}
                 ratio="3/4"
                 src={src}
                 alt={`${item.name} — foto ${i + 1}`}
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes={
+                  item.gallery.length % 4 === 0
+                    ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    : "(max-width: 768px) 100vw, 33vw"
+                }
               />
             ))}
           </div>
@@ -157,7 +168,7 @@ export default async function ExperienciaCasePage({ params }: PageProps) {
           <Reveal>
             {result ? (
               <div className="mb-10">
-                <span className="bg-gradient-to-br from-white to-brand-200 bg-clip-text font-display text-6xl font-semibold text-transparent sm:text-7xl">
+                <span className="bg-gradient-to-br from-white to-brand-200 bg-clip-text font-display text-6xl font-bold text-transparent sm:text-7xl">
                   {resultNumber !== null ? (
                     <CountUp value={resultNumber} suffix={resultSuffix} />
                   ) : (

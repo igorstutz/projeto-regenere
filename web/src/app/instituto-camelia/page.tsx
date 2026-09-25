@@ -40,7 +40,7 @@ export default function InstitutoCameliaPage() {
                   <p key={i}>{p}</p>
                 ))}
               </div>
-              <h3 className="mt-8 font-semibold text-foreground">{c.objectives.title}</h3>
+              <h3 className="mt-8 font-bold text-foreground">{c.objectives.title}</h3>
               <ul className="mt-4 space-y-2.5">
                 {c.objectives.items.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sand-700">

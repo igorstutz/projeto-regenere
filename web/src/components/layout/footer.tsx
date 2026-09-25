@@ -43,7 +43,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {footerNav.map((group) => (
               <div key={group.title}>
-                <h3 className="text-sm font-semibold text-white">{group.title}</h3>
+                <h3 className="text-sm font-bold text-white">{group.title}</h3>
                 <ul className="mt-4 space-y-2.5">
                   {group.items.map((item) => (
                     <li key={item.href}>

@@ -51,7 +51,7 @@ export function SupportersWall({ items }: { items: Supporter[] }) {
                 href={active.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-1.5 font-semibold text-brand-700 hover:text-brand-800"
+                className="mt-5 inline-flex items-center gap-1.5 font-bold text-brand-700 hover:text-brand-800"
               >
                 Visitar site
                 <ArrowRightIcon className="size-4" />

@@ -18,7 +18,7 @@ export function PageHero({ eyebrow, title, intro }: PageHeroProps) {
       <Container size="wide" className="relative z-10">
         <Reveal className="max-w-3xl">
           {eyebrow ? <Badge className="mb-5">{eyebrow}</Badge> : null}
-          <h1 className="text-4xl font-semibold text-balance sm:text-5xl">{title}</h1>
+          <h1 className="text-4xl font-bold text-balance sm:text-5xl">{title}</h1>
           {intro ? (
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-brand-900/80">
               {intro}

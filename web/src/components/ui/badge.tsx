@@ -20,7 +20,7 @@ export function Badge({ children, icon, className }: BadgeProps) {
       className={cn(
         "relative inline-flex items-center gap-2 overflow-hidden rounded-lg",
         "bg-gradient-to-b from-accent-500 to-accent-700 px-3.5 py-1.5",
-        "text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-white/15",
+        "text-sm font-bold text-white shadow-sm ring-1 ring-inset ring-white/15",
         className,
       )}
     >

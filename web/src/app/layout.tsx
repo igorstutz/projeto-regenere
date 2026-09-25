@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 import { siteConfig } from "@/config/site";
@@ -8,15 +8,12 @@ import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/layout/json-ld";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/jsonld";
 
-const inter = Inter({
+// Fonte da marca: Montserrat, só nos pesos que a identidade usa —
+// Regular (400), Bold (700) e ExtraBold (800).
+const montserrat = Montserrat({
   subsets: ["latin"],
+  weight: ["400", "700", "800"],
   variable: "--font-body",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-heading",
   display: "swap",
 });
 
@@ -44,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${inter.variable} ${fraunces.variable} h-full`}
+      className={`${montserrat.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-background">
         <JsonLd data={organizationJsonLd()} />

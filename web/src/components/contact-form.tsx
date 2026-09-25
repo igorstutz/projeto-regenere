@@ -87,7 +87,7 @@ export function ContactForm({ note }: { note?: string }) {
         >
           Abrimos seu aplicativo de e-mail para concluir o envio. Se não abriu,
           escreva para{" "}
-          <a className="font-semibold underline" href={`mailto:${siteConfig.contact.email}`}>
+          <a className="font-bold underline" href={`mailto:${siteConfig.contact.email}`}>
             {siteConfig.contact.email}
           </a>
           .

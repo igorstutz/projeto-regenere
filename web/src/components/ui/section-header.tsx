@@ -39,7 +39,7 @@ export function SectionHeader({
             {eyebrow}
           </Badge>
         ) : (
-          <p className="mb-3 text-sm font-semibold tracking-wide text-brand-600 uppercase">
+          <p className="mb-3 text-sm font-bold tracking-wide text-brand-600 uppercase">
             {eyebrow}
           </p>
         )

@@ -258,5 +258,30 @@
     "width": 320,
     "height": 120,
     "kb": 5
+  },
+  "public/images/photos/tavares-1.webp": {
+    "width": 1400,
+    "height": 1050,
+    "kb": 138
+  },
+  "public/images/photos/tavares-2.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 141
+  },
+  "public/images/photos/tavares-3.webp": {
+    "width": 1200,
+    "height": 1600,
+    "kb": 174
+  },
+  "public/images/photos/tavares-4.webp": {
+    "width": 1040,
+    "height": 1600,
+    "kb": 96
+  },
+  "public/images/photos/tavares-5.webp": {
+    "width": 904,
+    "height": 1600,
+    "kb": 91
   }
 }

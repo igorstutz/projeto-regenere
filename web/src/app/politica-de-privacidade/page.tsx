@@ -31,7 +31,7 @@ export default function PoliticaPrivacidadePage() {
                 aria-label="Índice da política"
                 className="sticky top-24 self-start border-l border-border"
               >
-                <p className="mb-3 pl-4 text-xs font-semibold tracking-wide text-sand-400 uppercase">
+                <p className="mb-3 pl-4 text-xs font-bold tracking-wide text-sand-400 uppercase">
                   Nesta página
                 </p>
                 <ul className="space-y-1">
@@ -84,7 +84,7 @@ export default function PoliticaPrivacidadePage() {
                 </p>
                 <Link
                   href="/contato"
-                  className="mt-4 inline-flex items-center gap-1.5 font-semibold text-brand-700 hover:text-brand-800"
+                  className="mt-4 inline-flex items-center gap-1.5 font-bold text-brand-700 hover:text-brand-800"
                 >
                   Ir para a página de contato
                   <ArrowRightIcon className="size-4" />

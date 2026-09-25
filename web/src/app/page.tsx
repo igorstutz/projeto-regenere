@@ -39,7 +39,7 @@ export default function HomePage() {
           <div className="grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:gap-16">
             <Reveal>
               <Badge>{c.hero.eyebrow}</Badge>
-              <h1 className="mt-6 text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 text-4xl font-bold text-balance sm:text-5xl lg:text-6xl">
                 {c.hero.title}
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-900/80 sm:text-xl">
@@ -137,7 +137,7 @@ export default function HomePage() {
                 ))}
                 <Link
                   href={c.about.href}
-                  className="group inline-flex items-center gap-1.5 font-semibold text-brand-700 hover:text-brand-800"
+                  className="group inline-flex items-center gap-1.5 font-bold text-brand-700 hover:text-brand-800"
                 >
                   Conheça o projeto
                   <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
@@ -209,16 +209,16 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
                   <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                    <span className="inline-flex items-center rounded-md bg-white/15 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-inset ring-white/20 backdrop-blur">
+                    <span className="inline-flex items-center rounded-md bg-white/15 px-2.5 py-1 text-xs font-bold text-white ring-1 ring-inset ring-white/20 backdrop-blur">
                       {item.kind}
                     </span>
-                    <h3 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+                    <h3 className="mt-3 text-2xl font-bold text-white sm:text-3xl">
                       {item.name}
                     </h3>
                     <p className="mt-2 max-w-md text-sm leading-relaxed text-white/85">
                       {item.description}
                     </p>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white">
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-white">
                       Ver experiência
                       <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
                     </span>

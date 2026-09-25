@@ -128,7 +128,7 @@ export default function ComoApoiarPage() {
                     <Icon className="size-5" />
                   </span>
                   <div>
-                    <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
+                    <h3 className="text-base font-bold text-foreground">{item.title}</h3>
                     <p className="mt-1 text-sm leading-relaxed text-sand-600">
                       {item.description}
                     </p>
@@ -158,7 +158,7 @@ export default function ComoApoiarPage() {
                 delay={i * 120}
                 className="relative rounded-[var(--radius-card)] border border-border p-8"
               >
-                <span className="grid size-12 place-items-center rounded-full bg-brand-600 font-display text-lg font-semibold text-white">
+                <span className="grid size-12 place-items-center rounded-full bg-brand-600 font-display text-lg font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="mt-5 text-lg">{step.title}</h3>

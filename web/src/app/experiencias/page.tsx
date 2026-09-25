@@ -38,11 +38,11 @@ export default function ExperienciasPage() {
                     className="rounded-none"
                   />
                   <div className="flex flex-1 flex-col p-8">
-                    <p className="text-sm font-semibold text-brand-600">{item.kind}</p>
+                    <p className="text-sm font-bold text-brand-600">{item.kind}</p>
                     <h2 className="mt-2 text-2xl">{item.name}</h2>
                     <p className="mt-1 text-sm text-sand-500">{item.location}</p>
                     <p className="mt-3 leading-relaxed text-sand-700">{item.summary}</p>
-                    <span className="mt-6 inline-flex items-center gap-1.5 font-semibold text-brand-700">
+                    <span className="mt-6 inline-flex items-center gap-1.5 font-bold text-brand-700">
                       Ver experiência
                       <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
                     </span>

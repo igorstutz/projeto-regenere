@@ -125,7 +125,7 @@ export function TestimonialStories({ items }: { items: Testimonial[] }) {
           />
         </span>
         <div className="leading-tight">
-          <p className="text-sm font-semibold">Projeto Regenere</p>
+          <p className="text-sm font-bold">Projeto Regenere</p>
           <p className="text-xs text-white/70">@projetoregenere</p>
         </div>
       </div>
@@ -137,7 +137,7 @@ export function TestimonialStories({ items }: { items: Testimonial[] }) {
           {item.quote}
         </blockquote>
         <figcaption className="mt-5">
-          <span className="block font-semibold">{item.name}</span>
+          <span className="block font-bold">{item.name}</span>
           <span className="block text-sm text-white/75">{item.role}</span>
         </figcaption>
       </figure>

@@ -6,7 +6,7 @@ export type ButtonVariant = "primary" | "secondary" | "ghost" | "inverted";
 export type ButtonSize = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold " +
+  "inline-flex items-center justify-center gap-2 rounded-full font-bold " +
   "transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 " +
   "disabled:pointer-events-none disabled:opacity-60";
 

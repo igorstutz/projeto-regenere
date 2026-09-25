@@ -88,7 +88,7 @@ export function StatsGrid({ stats, variant = "dark", columns = 3 }: StatsGridPro
 
             <dt
               className={cn(
-                "bg-clip-text font-display text-5xl font-semibold tracking-tight text-transparent sm:text-6xl",
+                "bg-clip-text font-display text-5xl font-bold tracking-tight text-transparent sm:text-6xl",
                 isDark
                   ? "bg-gradient-to-br from-white to-brand-200"
                   : "bg-gradient-to-br from-brand-700 to-brand-500",
@@ -98,7 +98,7 @@ export function StatsGrid({ stats, variant = "dark", columns = 3 }: StatsGridPro
             </dt>
 
             <dd className="mt-3">
-              <span className={cn("font-semibold", isDark ? "text-white" : "text-foreground")}>
+              <span className={cn("font-bold", isDark ? "text-white" : "text-foreground")}>
                 {stat.label}
               </span>
               {stat.description ? (

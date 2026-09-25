@@ -177,7 +177,7 @@ export default function MetodologiaPage() {
                 delay={i * 90}
                 className="relative flex gap-5 pb-10 last:pb-0 sm:gap-6"
               >
-                <span className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full bg-brand-600 font-display text-sm font-semibold text-white shadow-sm sm:size-12 sm:text-base">
+                <span className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full bg-brand-600 font-display text-sm font-bold text-white shadow-sm sm:size-12 sm:text-base">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="pt-1.5 sm:pt-2.5">

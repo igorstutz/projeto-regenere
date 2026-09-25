@@ -32,7 +32,7 @@ export function Logo({ className, inverted = false }: LogoProps) {
       </span>
       <span
         className={cn(
-          "font-display text-xl font-semibold tracking-tight",
+          "font-display text-xl font-bold tracking-tight",
           inverted ? "text-white" : "text-brand-800",
         )}
       >
